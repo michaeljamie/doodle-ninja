@@ -1,0 +1,34 @@
+.chatmsg {
+	display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.chatmsg1 {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.avatar {
+	height: 50px;
+	border-radius: 30px;
+}
+
+.chattext {
+    font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin-left: 3px;
+}
+
+.chatmessage {
+    font-size: 15px;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	margin-left: 3px;
+}

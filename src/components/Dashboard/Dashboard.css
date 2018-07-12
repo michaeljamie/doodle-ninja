@@ -1,0 +1,33 @@
+.dashboard {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+.dashcard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 4px black;
+    padding: 20px;
+    height: 500px;
+    width: 380px;
+    background: white;
+    transition: all .2s ease-in-out;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+.dashcard:hover {
+    transform: scale(1.05)
+}
+
+.dashpic {
+    height: 200px;
+    border:10px;
+}

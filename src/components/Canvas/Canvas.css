@@ -1,0 +1,21 @@
+.canvas {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.canvasbody {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.chatbox {
+	margin-right: 0px;
+}
