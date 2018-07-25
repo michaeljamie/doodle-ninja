@@ -4,8 +4,12 @@ const express = require('express'),
   session = require('express-session'),
   socket = require('socket.io');
   bodyParser = require('body-parser');
+  ctrl = require('./controller');
+  nodemailer = require('nodemailer')
+  
 require('dotenv').config();
-const ctrl = require('./controller')
+
+
 
 
 
@@ -33,9 +37,19 @@ const app = express()
         //message dispatched to ${doodleId}
 
         socket.on('addItem', data => {
-            console.log(data);
             socket.broadcast.emit('addItem', data)
-        })
+            console.log(data);
+        });
+
+        socket.on('sendImage', data => {
+          const {imageUrl} = data;
+          const response = {
+            imageUrl: imageUrl
+          }
+          console.log('backend data =', data)
+          socket.broadcast.emit('addImage', data)
+          socket.emit('addImage', data)
+        });
 
         socket.on('disconnect', () => {
             console.log('User Disconnected');
@@ -44,7 +58,9 @@ const app = express()
 
 
 
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(`${__dirname}/../build`))
 
 let {
@@ -54,6 +70,8 @@ let {
     CONNECTION_STRING,
     SESSION_SECRET
 } = process.env;
+
+const secret = SESSION_SECRET
 
 app.use(
 session({
@@ -124,7 +142,12 @@ app.get('/api/logout', (req, res) => {
     
 })
 
-app.get('/api/users-data', ctrl.read)
-app.post('/api/update', ctrl.update)
+app.get('/api/user-data', ctrl.read)
+app.get('/api/doodles', ctrl.fetch)
+app.get('/api/drawings', ctrl.getDrawings)
 app.delete('/api/delete', ctrl.delete)
+app.delete(`/api/deleteDrawing/:id`, ctrl.deleteDrawing)
+app.post('/api/update', ctrl.update)
 app.post('/api/createdoodle', ctrl.create)
+app.post('/api/send', ctrl.send)
+app.post('/api/upload', ctrl.upload)

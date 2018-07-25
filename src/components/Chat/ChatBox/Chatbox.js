@@ -1,5 +1,6 @@
 import React from 'react';
 import './Chatbox.css';
+import avatar from './../../../images/avatar.jpg';
 
 export default function ChatBox(props){
     console.log(5555555, props)
@@ -7,21 +8,24 @@ export default function ChatBox(props){
     if(props.currentUser === props.messageUser){
         box = (
             <div className = 'chatmsg'>
-                <img src={props.userpic} alt="avatar" className = 'avatar'/>
+                <img src={props.userpic ? props.userpic : avatar } alt="avatar" className = 'avatar'/>
                 <div>
-                <div className='chattext'><p>{props.messageUserName}:</p></div>
+                <div className='chattext'><p>{props.messageUserName ? props.messageUserName : 'Anonymous User' }:</p></div>
                 <div className='chatmessage'><p>{props.userObj.message}</p></div>
                 </div>
+                
             </div>
+            
         )
     } else {
         box = (
             <div className = 'chatmsg1'>
-                <img src={props.messageUserPic} alt="avatar" className = 'avatar'/>
+                <img src={props.messageUserPic ? props.messageUserPic : avatar } alt="avatar" className = 'avatar'/>
                 <div>
-                    <div className='chattext'><p>{props.messageUserName}:</p></div>
+                    <div className='chattext'><p>{props.messageUserName ? props.messageUserName : 'Anonymous User' }:</p></div>
                     <div className='chatmessage'><p>{props.userObj.message}</p></div>
                 </div>
+                
             </div>
         )
     }

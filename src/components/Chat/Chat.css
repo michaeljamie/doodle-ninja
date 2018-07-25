@@ -1,19 +1,43 @@
 .chat {
-    text-align: center;
     background: white;
-	width: 25vw;
-	border-left: 1px solid #D32F2F;
-	border-right: 1px solid #D32F2F;
-	border-top: 1px solid #D32F2F;
+	width: 20vw;
+	border: 1px solid black;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 800px;
 }
 
 .messages {
-	height: 90vh;
+	height: 700px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
     padding: 40px 15px;
-    overflow-wrap: scroll;
+	overflow-y: scroll;
+	word-wrap: break-word;
+	padding: 2px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+ 
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #2AABE2; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #2AABE2; 
 }
 
 .chatstyle {
@@ -25,11 +49,12 @@
 }
 
 .input {
-	height: 10vh;
-    background-color: #D32F2F;
+	height: 99px;
+    background-color: #2AABE2;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	border-bottom: 1px solid black;
 }
 
 .chatinput {
@@ -40,14 +65,28 @@
 	outline: none;
 	font-size: medium;
 	padding: 5px;
+	color: #252525;
+}
+
+.chatinput:hover {
+	
 }
 
 .chatbutton {
 	font-size: 20px;
-	color: #FFEBEE;
+	color: white;
+	background: #2AABE2;
 	border: none;
-    background-color: #E53935;
     margin-right: 8px;
+}
+
+.send {
+	height: 30px;
+	margin-right: 19px;
+}
+
+.send:hover {
+	transform: scale(1.20);
 }
 
 

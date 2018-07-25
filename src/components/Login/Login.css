@@ -1,33 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Shojumaru');
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Ceviche+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .Login {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./../../images/bkgd.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
+  background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #F44336;
-  /* background: #ff3b3f; */
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+  background-attachment: fixed;
+  flex-wrap: nowrap;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+  color: white;
 }
 
 .LoginButton {
-    margin-top: 30px;
-    width: 195px;
+    
+    width: 290px;
     height: 60px;
     cursor: pointer;
     outline: none;
     border-radius: 5px;
     border: none;
-    background: white;
-    font-size: 30px;
-    box-shadow: 9px 15px #999;
-    font-family: 'Shojumaru', cursive;
-    
+    background: #2AABE2;
+    font-size: 40px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: white;
+    margin-bottom: 0px;
   }
 
 .LoginButton:hover {
-    background-color: #1e2c39;
+    background-color: white;
+    color: #2AABE2;
   }
 
 .LoginButton:active {
@@ -36,15 +47,436 @@
     transform: translateY(4px);
   }
 
-.LoginButton:focus {
-    outline: none;
+  .LoginButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .LoginButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -30px;
+    transition: 0.5s;
+  }
+  
+  .LoginButton:hover span {
+    padding-right: 25px;
+  }
+  
+  .LoginButton:hover span:after {
+    opacity: 1;
+    right: 0;
   }
 
   .welcome {
-    font-size: 63px;
-    font-family: 'Shojumaru', cursive;
+    font-size: 88px;
+    font-family: 'Ceviche One', cursive;
     margin-bottom: 0px;
   }
+
+  .welcome1 {
+    font-size: 38px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    margin-bottom: 0px;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .welcome1:hover {
+    transform: scale(1.20);
+  }
+
+  .collabtools {
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    background-color: whitesmoke;
+    
+  }
+
+  .bartitle {
+    margin-top: 90px;
+    font-size: 80px;
+    color: #252525;
+    font-family: 'Roboto', sans-serif;
+    height: 100px;
+  }
+
+  .bar {
+    height: 600px;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    width: 100%;
+  }
+
+  .bottombar {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: center;
+  }
+
+  .topnav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+    width: 90vw;
+    margin-top: 0px;
+  }
+
+  .navmid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .navlogo {
+    height: 67px;
+    margin-right: 20px;
+  }
+
+  .social {
+    height: 35px;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+
+  .social2 {
+    height: 35px;
+    margin-right: 28px;
+    margin-top: 15px;
+  }
+
+  .social:hover {
+    transform: scale(1.20);
+  }
+
+  .social2:hover {
+    transform: scale(1.20);
+  }
+
+  .arrowlogin {
+    margin-top: 0px;
+    width: 120px;
+    animation: float 3.0s ease-in-out infinite;
+  }
+
+  .logintitle {
+    font-size: 95px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    margin-top: 50px;
+  }
+
+  .loginsubtitle {
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 50px;
+    margin-top: 14px;
+  }
+
+  .loginhead {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+  }
+
+ 
+
+  .fotocontainer1 {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 250px;
+    width: 375px;
+    background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) );
+    box-shadow: 0px 0px 0px 5px #2AABE2;
+    transition: box-shadow 0.3s linear;
+    margin: 0.5em;
+  }
+
+  .fotocontainer2 {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 250px;
+    width: 375px;
+    background: linear-gradient( rgba(0, 0, 0, 3), rgba(0, 0, 0, 3) );
+    box-shadow: 0px 0px 0px 5px #2AABE2;
+    transition: box-shadow 0.3s linear;
+    margin: 0.5em;
+  }
+
+  .fotocontainer3 {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 250px;
+    width: 375px;
+    background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    box-shadow: 0px 0px 0px 5px #2AABE2;
+    transition: box-shadow 0.3s linear;
+    margin: 0.5em;
+  }
+
+  .fotocontainer4 {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 250px;
+    width: 375px;
+    background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    box-shadow: 0px 0px 0px 5px #2AABE2;
+    transition: box-shadow 0.3s linear;
+    margin: 0.5em;
+  }
+
+  .fotologin {
+    height: 250px;
+    width: 375px;
+    background: linear-gradient( rgba(0, 0, 1, 3), rgba(0, 0, 1, 3) );
+    opacity: .80;
+  }
+
+  .fotocontainer1:hover {
+    opacity: .93;
+    box-shadow: 0px 0px 0px 13px #2AABE2;
+    cursor: default;
+  }
+
+  .fotocontainer2:hover {
+    opacity: .93;
+    box-shadow: 0px 0px 0px 13px #2AABE2;
+    cursor: default;
+  }
+
+  .fotocontainer3:hover {
+    opacity: .93;
+    box-shadow: 0px 0px 0px 13px #2AABE2;
+    cursor: default;
+  }
+
+  .fotocontainer4:hover {
+    opacity: .93;
+    box-shadow: 0px 0px 0px 13px #2AABE2;
+    cursor: default;
+  }
+
+  .fototext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+  }
+
+  .scrollbar {
+    height: 400px;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('./../../images/collab.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+  }
+
+  .scrolltitle {
+    font-size: 80px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    margin-top: 50px;
+    color: white;
+  }
+
+  .lowerbar {
+    height: 1400px;
+    background: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+
+  .lbtop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    height: 630px;
+  }
+
+  .lbbottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    height: 630px;
+  }
+
+  .lowerbartitle {
+    font-size: 70px;
+    color: #2AABE2;
+    font-family: 'Pathway Gothic One', sans-serif;
+  }
+
+  .lowerchat {
+    height: 600px;
+    width: 340px;
+    margin-right: 80px;
+    background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url('./../../images/chat.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    background-repeat: no-repeat;
+    border: #2AABE2 solid 3px;
+  }
+
+  .lowercanvas {
+    height: 600px;
+    width: 350px;
+    margin-left: 80px;
+    background: linear-gradient( rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) ), url('./../../images/canvasexample.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    background-repeat: no-repeat;
+    border: #2AABE2 solid 3px;
+  }
+
+  .lowerright {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: center;
+    width: 55vw;
+  }
+
+  .lowertitle {
+    font-size: 76px;
+    margin-bottom: 30px;
+    color: #2AABE2;
+    font-family: 'Pathway Gothic One', sans-serif;
+  }
+
+.lowersubtitle {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.chevron {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.splitlower {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+  align-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+  .barsection {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+
+  .baricon {
+    height: 85px;
+    margin-top: 18px;
+    margin-right: 35px;
+  }
+
+  .barcray {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+    margin-bottom: 15px;
+  }
+
+  .createlower {
+    color: #252525;
+    margin-top: 30px;
+    font-size: 38px;
+    width: 26vw;
+    margin-bottom: 70px;
+    text-align: justify;
+    font-family: 'Pathway Gothic One', sans-serif;
+  }
+  
+
+
+  @keyframes float {
+    0% {
+      box-shadow: rgba(0,0,0,0.6);
+      transform: translatey(0px);
+    }
+    50% {
+      box-shadow:  rgba(0,0,0,0.2);
+      transform: translatey(-25px);
+    }
+    100% {
+      box-shadow: rgba(0,0,0,0.6);
+      transform: translatey(0px);
+    }
+  }
+
 
 
   

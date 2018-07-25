@@ -1,0 +1,80 @@
+.editcard {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 4px black;
+    height: 880px;
+    width: 650px;
+    background: white;
+    transition: all .2s ease-in-out;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+
+.editboard {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+    align-content: center;
+    height: auto;
+    background-color: whitesmoke;
+}
+
+.user-name1 { 
+    color: white;
+    font-size: 45px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 18px;
+}
+
+.edittop {
+    width: 650px;
+    height: 830px;
+    margin-top: 0px;
+    background: #2AABE2;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.editbutton {
+    width: 325px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #2AABE2;
+    font-size: 40px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: white;
+    margin-bottom: 30px;
+    margin-top: 35px;
+}
+
+.editbutton:hover {
+    background-color: white;
+    color: #2AABE2;
+    padding: 2.5px;
+    border: 2.5px solid #2AABE2;
+}
+
+.editinput {
+    height: 30px;
+	width: 220px;
+	border-radius: 16px;
+	border: 1px solid #2AABE2;
+	outline: none;
+	font-size: medium;
+	padding: 5px;
+    color: #252525;
+    margin-top: 18px;
+}

@@ -3,6 +3,8 @@ import io from 'socket.io-client';
 import './Chat.css';
 import { connect } from 'react-redux';
 import ChatBox from './ChatBox/Chatbox';
+import chaticon from './../../images/chaticon.png';
+
 // import axios from 'axios';
 
 const socket = io('http://localhost:3005')
@@ -26,13 +28,11 @@ class Chat extends Component {
     // });
         
         socket.on(`message dispatched`, data => {
-            console.log(33333, data)
-            const messages = [data, ...this.state.messages]
+            const messages = [ ...this.state.messages, data]
             this.setState({messages})
         })
         
         socket.on('welcome', this.setUserId)
-        
       }
 
     
@@ -61,6 +61,7 @@ class Chat extends Component {
   
 
   render(){
+      console.log(this.props.user)
     const messages = this.state.messages.map((e, i) => {
 
 
@@ -89,8 +90,9 @@ class Chat extends Component {
                 { messages[0] ? messages : null}
             </div>
         <div className="input">
-          <input className='chatinput' onKeyDown={this.keyPress} onChange = {(e) => {this.setState ({ message: e.target.value })}} ref = 'message'/>
-          <button className = 'chatbutton' onClick={this.sendMessage}>Send</button>
+          <input className='chatinput' onKeyDown={this.keyPress} onChange = {(e) => {this.setState ({ message: e.target.value })}} ref = 'message' placeholder = 'Enter Message'/>
+          {/* <button className = 'chatbutton' onClick={this.sendMessage}>Send</button> */}
+          <img className = 'send' onClick={this.sendMessage} src={chaticon} alt=""/>
         </div>
         
       </div>

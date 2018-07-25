@@ -17,13 +17,14 @@ export default (context) => {
     return [stroke];
   };
 
+
   const drawLine = (item, start, { x, y }) => {
     context.save();
     context.lineJoin = 'round';
     context.lineCap = 'round';
     context.beginPath();
     context.lineWidth = item.size;
-    context.strokeStyle = item.color;
+    context.strokeStyle = 'item.color';
     context.globalCompositeOperation = 'source-over';
     context.moveTo(start.x, start.y);
     context.lineTo(x, y);
@@ -42,6 +43,7 @@ export default (context) => {
 
     return [stroke];
   };
+
 
   const onDebouncedMouseMove = () => {
     const debouncedPoints = points;
@@ -81,3 +83,4 @@ export default (context) => {
     draw,
   };
 };
+

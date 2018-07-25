@@ -1,18 +1,28 @@
-.dashboard {
+.dashpage {
+    height: 800px;
     display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: center;
 	align-content: center;
 }
+.dashboard {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: flex-start;
+    align-content: center;
+    width: 75vw;
+    height: 800px;
+    background-color: whitesmoke;
+}
 
 .dashcard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 4px black;
-    padding: 20px;
-    height: 500px;
-    width: 380px;
+    height: 800px;
+    width: 25vw;
     background: white;
     transition: all .2s ease-in-out;
     display: flex;
@@ -20,14 +30,175 @@
 	flex-wrap: nowrap;
 	justify-content: flex-start;
 	align-items: center;
+	align-content: flex-start;
+}
+
+.dashcardright {
+    margin-top: 50px;
+    border: 4px black;
+    height: 505px;
+    width: 500px;
+    background: white;
+    transition: all .2s ease-in-out;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: flex-start;
+}
+
+
+
+.dashpic {
+    height: 220px;
+    border:10px;
+    border-radius: 130px;
+    border: 2.5px solid white;
+    
+}
+
+.dashtop {
+    width: 650px;
+    height: 382px;
+    margin-top: 0px;
+    background: #2AABE2;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
 	align-content: center;
 }
 
-.dashcard:hover {
-    transform: scale(1.05)
+.dashrighttop {
+    width: 500px;
+    height: 130px;
+    margin-top: 0px;
+    background: #2AABE2;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
 
-.dashpic {
-    height: 200px;
-    border:10px;
+.eicon {
+    height: 50px;
+    margin-right: 15px;
+    margin-top: 13px;
 }
+
+.dashbutton {
+    width: 325px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background: #2AABE2;
+    font-size: 40px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: white;
+    margin-bottom: 0px;
+    margin-top: 35px;
+}
+
+
+
+.dashbutton .imagehover {
+    display: none;
+}
+
+.imagehover {
+    height: 26px;
+    margin-right: 9px;
+}
+
+.dashbutton:hover {
+    background-color: white;
+    color: #2AABE2;
+    padding: 2.5px;
+    border: 2.5px solid #2AABE2;
+}
+
+
+.dashbutton:hover .imagehover {
+    display: initial;
+}
+
+.user-name {
+    color: white;
+    font-size: 45px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 18px;
+}
+    
+
+.dashicon {
+    height: 26px;
+    margin-right: 9px;
+}
+
+.dashinput {
+    height: 30px;
+	width: 220px;
+	border-radius: 16px;
+	border: 1px solid #2AABE2;
+	outline: none;
+	font-size: medium;
+	padding: 5px;
+    color: #252525;
+    margin-top: 18px;
+}
+
+.drawcard {
+    background: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 680px;
+    width: 680px;
+    display: flex;
+    transition: all .2s ease-in-out;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+    align-content: center;
+
+}
+
+.currentdrawings {
+    height: 580px;
+    overflow-y: scroll;
+    width: 570px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+.drawcardtop {
+    width: 680px;
+    height: 130px;
+    background: #2AABE2;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: center;
+    margin-top: 0px;
+}
+
+.drawingtitle {
+    color: white;
+    font-size: 45px;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+
+}
+

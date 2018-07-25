@@ -1,0 +1,33 @@
+.drawingimg {
+    margin-top: 15px;
+    height: 300px;
+    width: 390px;
+}
+
+.drawingcard {
+    height: 450px;
+    width: 525px;
+    background: #2AABE2;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: stretch;
+    margin-top: 15px;
+}
+
+
+.drawingjoin {
+    background: white;
+    color: #2AABE2;
+    border: none;
+    border-radius: 10px;
+    height: 32px;
+    width: 145px;
+    font-size: 26px;
+    cursor: pointer;
+}
