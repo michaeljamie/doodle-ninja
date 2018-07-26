@@ -18,10 +18,10 @@ import lineicon from './../../images/lineicon.png';
 import circleicon from './../../images/circleicon.png';
 import coloricon from './../../images/coloricon.png';
 import sizeicon from './../../images/sizeicon.png';
-import avatar from './../../images/avatar.jpg';
 
 
-const socket = io('http://localhost:3005')
+
+const socket = io()
 
 
 
