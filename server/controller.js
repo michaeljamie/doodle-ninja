@@ -98,6 +98,19 @@ module.exports = {
         });
     },
 
+    updateUser: (req, res) => {
+        const { auth_id } = req.session.user;
+        const { doodleId } = req.body;
+        console.log(auth_id, doodleId)
+
+        req.app.get('db').update([auth_id, doodleId])
+        .then( user => res.status(200).send(user[0]))
+        .catch( err => {
+            res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+            console.log(err)
+        })
+    },
+
     send: (req, res ) => {
         const { formname, formemail, formsubject, formmessage } = req.body;
         const output = `

@@ -29,6 +29,7 @@
     "react-dom": "^16.4.1",
     "react-dropzone": "^4.2.13",
     "react-loading-screen": "0.0.17",
+    "react-particles-js": "^2.3.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
@@ -38,6 +39,7 @@
     "react-sketchpad": "0.0.3",
     "react-toastify": "^4.1.0",
     "redux": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1",
     "socket.io": "^2.1.1",
     "uuid": "^3.3.2"
   },

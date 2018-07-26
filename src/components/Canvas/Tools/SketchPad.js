@@ -15,6 +15,7 @@ import clear from './../../../images/clear.png';
 import adduser from './../../../images/adduser.png';
 import uploadwhite from './../../../images/uploadwhite.png';
 import downloadwhite from './../../../images/downloadwhite.png';
+import closewhite from './../../../images/closewhite.png';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { EmailShareButton } from 'react-share';
@@ -35,7 +36,11 @@ class SketchPad extends Component {
     super(props);
     this.state = {
         imageurl: '',
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        display: false,
+        selectedDrawing: '',
+        drawings: [],
+        displayDownload: false
     }
 
 
@@ -85,9 +90,18 @@ class SketchPad extends Component {
     this.canvas = findDOMNode(this.canvasRef);
     this.ctx = this.canvas.getContext('2d');
     this.setBackground();
+    axios.get('/api/drawings').then(res => {
+            
+      this.setState({drawings: res.data})
+
+});
     socket.on('addImage', data => {
       console.log('front-end data =', data)
       this.addImage(data.imageUrl);
+    })
+    socket.on('downloadCanvas', data => {
+      console.log('data', data)
+      this.addCanvas(data)
     })
     // this.addText();
     this.initTool(this.props.tool);
@@ -99,9 +113,26 @@ class SketchPad extends Component {
       .forEach(item => {
         this.initTool(item.tool);
         this.tool.draw(item, this.props.animate);
+        
       });
     this.initTool(tool);
   }
+
+  addCanvas = (dataurl) => {
+
+    const ctx = this.canvas.getContext('2d');
+    const imageObj1 = new Image();
+    imageObj1.src = dataurl;
+    imageObj1.crossOrigin = "Anonymous";
+    // const x = Math.random() * this.props.width-300;
+    // const y = Math.random() * this.props.height-300;
+    
+    imageObj1.onload = function() {
+      ctx.drawImage(imageObj1,0,0);
+    }
+  }
+
+
 
   addImage = (imgString) => {
     const ctx = this.canvas.getContext('2d');
@@ -249,9 +280,41 @@ class SketchPad extends Component {
     ];
   }
 
+  downloadDrawing = (datastring) => {
+    socket.emit('downloadBlob', datastring)
+      
+}
+
+  showDisplay = () => {
+    this.setState({ displayDownload: true })
+  }
+
+  updateDisplay = () => {
+    this.setState({ displayDownload: false })
+  }
+
   render() {
     const {width, height, canvasClassName} = this.props;
-    console.log(this.state.backgroundColor)
+
+    const downloadsArr = this.state.drawings.map((e, i) => {
+      return (
+        <div key = {e.id} className = 'downloadscard'>
+          <div className = 'downloads'>
+            <img src={e.dataurl} className = 'drawingimg' alt=""/>
+            <button className = 'downloadjoin' onClick = {() => this.downloadDrawing(e.dataurl)}>Download to Canvas</button>
+          </div>
+          
+        </div>
+          // <DrawingCard
+          // key ={e.id}
+          // id = {e.id}
+          // drawing = {e.dataurl}
+          // delete = {() => {this.deleteDrawing(e.id)}}
+          // />
+      )
+  })
+    
+    
     return (
       <div>
         <div className = 'canvasoptions'>
@@ -267,9 +330,11 @@ class SketchPad extends Component {
           <div>
             <img className = 'pencilbutton' onClick = {this.uploadCanvas} src={uploadwhite} alt="upload"/>
             <img className = 'pencilbutton' onClick = {this.saveCanvas} src={save} alt="save"/>
-            <img className = 'pencilbutton' onClick = '' src={downloadwhite} alt="upload"/>
+            <img className = 'pencilbutton' onClick = {this.showDisplay} src={downloadwhite} alt="upload"/>
             <img className = 'pencilbutton' onClick = {this.clearCanvas} src={clear} alt="clear"/>
           </div>
+          
+       
         
           
           {/* <button className = 'canvasbutton' onClick = {this.clearCanvas}>Clear</button>
@@ -281,6 +346,15 @@ class SketchPad extends Component {
           <button onClick = {this.changeBackground}>Update background</button> */}
          
         </div>
+        { this.state.displayDownload ?
+          <div className = 'download'>
+            <div className = 'downloadtop'>
+              <img src={closewhite} onClick = {this.updateDisplay} alt="" className = 'closeicon'/>
+            </div>
+            <div className = 'downloadbox'>
+              {downloadsArr}
+            </div>
+          </div> : ''}
           <div className = 'canvasspace'>
             <canvas
               ref={(canvas) => { this.canvasRef = canvas; }}

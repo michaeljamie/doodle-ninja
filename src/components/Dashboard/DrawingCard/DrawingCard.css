@@ -31,3 +31,7 @@
     font-size: 26px;
     cursor: pointer;
 }
+
+.drawingjoin:hover {
+    transform: scale(1.10);
+}

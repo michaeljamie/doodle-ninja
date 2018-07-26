@@ -13,6 +13,8 @@ import createblue from './../../images/createblue.png';
 import collaborateblue from './../../images/collaborateblue.png';
 import integrateblue from './../../images/integrateblue.png';
 import bluechevron from './../../images/bluechevron.png';
+import bkgd from './../../images/bkgd.jpg';
+import Particles from 'react-particles-js';
 
 
 export default function Login(){
@@ -30,6 +32,23 @@ function login(){
     return(
         <div>
             <div className="Login">
+            {/* <Particles 
+              params={{
+            		particles: {
+            			line_linked: {
+            				shadow: {
+            					enable: true,
+            					color: "#3CA9D1",
+            					blur: 5
+            				}
+            			}
+            		}
+            	}}
+              style={{
+                width: '100%',
+                backgroundImage: `url(${bkgd})` 
+              }}
+            /> */}
                 <div className = 'topnav'>
                     <div>
                     <a href="http://www.facebook.com"><img className = 'social' src={facebooklogo} alt=""/></a>

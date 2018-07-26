@@ -32,7 +32,6 @@
 	justify-content: flex-start;
 	align-items: center;
 	align-content: center;
-	margin-top: 15px;
 	height: 480px;
 	width: 60px;
 	margin-top: 190px;
@@ -106,6 +105,11 @@
 .pencil:hover {
 	transform: scale(1.18);
 	cursor: pointer;
+}
+
+.canvasAvatar {
+	height: 50px;
+	padding: 12px;
 }
 
 

@@ -42,4 +42,76 @@
     cursor: pointer;
 }
 
+.download {
+    height: 500px;
+    width: 700px;
+    background: #2AABE2;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 185px;
+    border-radius: 30px;
+    font-family: 'Roboto', sans-serif;
+    color: white;    
+}
+
+.downloadtop {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-end;
+    align-content: stretch;
+    height: 80px;
+}
+
+.downloadbox {
+    height: 400px;
+    width: 600px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+    overflow-y: scroll;
+}
+
+.closeicon {
+    height: 45px;
+    margin-right: 18px;
+
+}
+
+.closeicon:hover {
+    cursor: pointer;
+    transform: scale(1.20);
+}
+
+.downloads {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+
+.downloadjoin {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    background: white;
+    color: #2AABE2;
+    border: none;
+    border-radius: 10px;
+    height: 32px;
+    width: 300px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.downloadjoin:hover {
+    transform: scale(1.10);
+}
+
+
 

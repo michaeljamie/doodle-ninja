@@ -24,21 +24,27 @@ const app = express()
         socket.emit("welcome", {user: socket.id})
         
         socket.on('message sent', data => {
-            const { id, user_name, user_pic, message } = data;
+            const { id, user_name, user_pic, message, currentdoodleid } = data;
             const response = {
                 id: id,
                 user_name: user_name,
                 user_pic: user_pic,
-                message: message
+                message: message,
+                currentdoodleid: currentdoodleid
           }
           io.emit(`message dispatched`, response);
         });
 
-        //message dispatched to ${doodleId}
-
         socket.on('addItem', data => {
-            socket.broadcast.emit('addItem', data)
-            console.log(data);
+          const {i, currentdoodleid, username, userpic} = data;
+          const response = {
+            i: i,
+            sockcurrentdoodleid: currentdoodleid,
+            sockusername: username,
+            sockuserpic: userpic
+          }
+          console.log('datapoints', i)
+            socket.broadcast.emit('addItems', response)
         });
 
         socket.on('sendImage', data => {
@@ -46,13 +52,19 @@ const app = express()
           const response = {
             imageUrl: imageUrl
           }
-          console.log('backend data =', data)
           socket.broadcast.emit('addImage', data)
           socket.emit('addImage', data)
         });
 
+        socket.on('downloadBlob', data => {
+
+          socket.broadcast.emit('downloadCanvas', data)
+          socket.emit('downloadCanvas', data)
+        });
+
         socket.on('disconnect', () => {
             console.log('User Disconnected');
+
           })
         });
 
@@ -145,6 +157,7 @@ app.get('/api/logout', (req, res) => {
 app.get('/api/user-data', ctrl.read)
 app.get('/api/doodles', ctrl.fetch)
 app.get('/api/drawings', ctrl.getDrawings)
+app.put(`/api/users/:id`, ctrl.updateUser)
 app.delete('/api/delete', ctrl.delete)
 app.delete(`/api/deleteDrawing/:id`, ctrl.deleteDrawing)
 app.post('/api/update', ctrl.update)

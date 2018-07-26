@@ -48,20 +48,18 @@ class Chat extends Component {
             message: this.refs.message.value
           }
         socket.emit('message sent', obj)
-        console.log('emit obj = ', obj)
         this.refs.message.value = '';
       }
 
       keyPress = (e) => {
           if(e.keyCode === 13){
-              console.log('value', e.target.value);
               this.sendMessage();
           }
       }
   
 
   render(){
-      console.log(this.props.user)
+     
     const messages = this.state.messages.map((e, i) => {
 
 

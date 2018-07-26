@@ -37,7 +37,7 @@ class Dashboard extends Component {
             
     });
         axios.get('/api/drawings').then(res => {
-            console.log(res.data);
+            
             this.setState({drawings: res.data})
      
     });
@@ -78,7 +78,7 @@ class Dashboard extends Component {
         this.notify();
     }
   
-    notify = () => toast.success('Contact Form Sent ✉️', {
+    notify = () => toast.success('✉️ Contact Form Sent ✉️', {
         position: "top-center",
         autoClose: 3500,
         hideProgressBar: false,
@@ -120,7 +120,7 @@ class Dashboard extends Component {
                 <div className = 'dashboard'>
                     <div className = 'drawcard'>
                         <div className = 'drawcardtop'>
-                            <h3 className = 'drawingtitle'>My Doodles</h3>
+                            <h3 className = 'drawingtitle'>My Saved Doodles</h3>
                         </div>
                             <div className = 'currentdrawings'>
                                 {drawingArr}

@@ -5,6 +5,8 @@ import {TOOL_LINE} from './Tools/Line';
 import {TOOL_RECTANGLE} from './Tools/Rectangle';
 import {TOOL_ELLIPSE} from './Tools/Ellipse';
 import {TOOL_ERASER} from './Tools/Eraser';
+import axios from 'axios';
+import { getUserData } from './../../ducks/reducer';
 import Chat from './../Chat/Chat';
 import { connect } from 'react-redux';
 import './Canvas.css';
@@ -16,6 +18,7 @@ import lineicon from './../../images/lineicon.png';
 import circleicon from './../../images/circleicon.png';
 import coloricon from './../../images/coloricon.png';
 import sizeicon from './../../images/sizeicon.png';
+import avatar from './../../images/avatar.jpg';
 
 
 const socket = io('http://localhost:3005')
@@ -36,7 +39,9 @@ class Canvas extends Component {
         color: '#252525',
         fill: false,
         fillColor: '#252525',
-        items: []
+        items: [],
+        drawing: false,
+        currentArtistPic: ''
     }
 
 
@@ -45,11 +50,23 @@ class Canvas extends Component {
   }
 
   componentDidMount = () => {
-    socket.on('addItem', item => 
-    this.setState({items: this.state.items.concat([item])}));
-  }
-
+    axios.get('/api/user-data').then(res => {
+      this.props.getUserData(res.data)
+  });
+    axios.get('/api/doodles').then(res => {
+      this.setState({doodles: res.data})
+  });
+    socket.on(`addItems`, response => {
  
+      const {i, sockcurrentdoodleid, sockusername, sockuserpic} = response;
+      this.setState({currentArtistPic: sockuserpic})
+      this.setState({ drawing: true })
+      this.setState({items: this.state.items.concat([i])})
+      
+    } );
+}
+
+  
   
   
  
@@ -70,34 +87,12 @@ class Canvas extends Component {
           <div className = 'canvasleft'>
           <div className = 'toolscanvas'>
             <div className="tools" style={{marginBottom:20}}>
+
               <img className = 'pencil' onClick={() => this.setState({tool:TOOL_PENCIL})} src={pencilicon} alt="pencil"/>
               <img className = 'pencil' onClick={() => this.setState({tool:TOOL_ERASER})} src={erasericon} alt=""/>
               <img className = 'pencil' onClick={() => this.setState({tool:TOOL_RECTANGLE})} src={squareicon} alt=""/>
               <img className = 'pencil' onClick={() => this.setState({tool:TOOL_LINE})} src={lineicon} alt=""/>
-              <img className = 'pencil' onClick={() => this.setState({tool:TOOL_ELLIPSE})} src={circleicon} alt=""/>
-              
-              {/* <button
-                style={tool === TOOL_PENCIL ? {fontWeight:'bold'} : undefined}
-                className={tool === TOOL_PENCIL  ? 'item-active' : 'item'}
-                onClick={() => this.setState({tool:TOOL_PENCIL})}
-              >Pencil</button>
-              <button
-                style={tool === TOOL_LINE ? {fontWeight:'bold'} : undefined}
-                className={tool === TOOL_LINE  ? 'item-active' : 'item'}
-                onClick={() => this.setState({tool:TOOL_LINE})}
-              >Line</button>
-              <button
-                style={tool === TOOL_ELLIPSE ? {fontWeight:'bold'} : undefined}
-                className={tool === TOOL_ELLIPSE  ? 'item-active' : 'item'}
-                onClick={() => this.setState({tool:TOOL_ELLIPSE})}
-              >Ellipse</button>
-              
-              <button
-                style={tool === TOOL_RECTANGLE ? {fontWeight:'bold'} : undefined}
-                className={tool === TOOL_RECTANGLE  ? 'item-active' : 'item'}
-                onClick={() => this.setState({tool:TOOL_RECTANGLE})}
-              >Rectangle</button> */}
-            
+              <img className = 'pencil' onClick={() => this.setState({tool:TOOL_ELLIPSE})} src={circleicon} alt=""/>            
                 <div className = 'othertools'>
                   <div className = 'slidecolor'>
                     <div className="canvassize">
@@ -140,7 +135,7 @@ class Canvas extends Component {
                     fillColor={fill ? fillColor : ''}
                     items={items}
                     tool={tool}
-                    onCompleteItem={(i) => socket.emit('addItem', i)}
+                    onCompleteItem={(i) => socket.emit('addItem', {i, currentdoodleid: this.props.user.currentdoodleid, userpic: this.props.user.user_pic, username: this.props.user.user_name})}
                     />
                 </div>
             </div>
@@ -163,4 +158,4 @@ function mapStateToProps(state){
   };
 }
 
-export default connect(mapStateToProps)(Canvas);
+export default connect(mapStateToProps, {getUserData})(Canvas);

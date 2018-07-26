@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { getUserData, newDoodle } from './../../ducks/reducer';
+import { getUserData, newDoodle, joinDoodle } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './Creator.css';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import DoodleCard from './DoodleCard/DoodleCard';
 import createwhite from './../../images/createwhite.png';
 import createblue from './../../images/createblue.png';
-import idea from './../../images/idea.jpg';
 import doodleidea from './../../images/doodleidea.png';
 import checkblue from './../../images/checkblue.png';
 
@@ -45,12 +44,16 @@ class Creator extends Component {
                 doodlePassword: this.state.doodlePassword
             }
             axios.post('/api/createdoodle', doodleObj)
-            .then( () => this.props.newDoodle(doodleObj))
+            .then( res => {this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: this.state.doodleId})})
+            .catch(e => console.log(e))
             this.setState({doodleId: '', doodlePassword: '', redirect: true})
-        } else {
-            this.setState({doodleId: '', doodlePassword: ''})
+        }     
+    }
+
+    keyPress = (e) => {
+        if(e.keyCode === 13){
+            this.createDoodle();
         }
-     
     }
     
 
@@ -60,7 +63,7 @@ class Creator extends Component {
     
     render(){
         if(this.state.redirect){
-            return <Link to = '/canvas'/>
+            return <Redirect push to = '/canvas'/>
         }
         let { user } = this.props
         const doodleArr = this.state.doodles.map((e, i) => {
@@ -81,8 +84,8 @@ class Creator extends Component {
                     <h3 className = 'creatortitle'>Create Doodle</h3>
                     </div>
                     <input type="text" className = 'createinput' onChange = {(e) => {this.handleChange('doodleId', e.target.value)}} placeholder = 'Doodle Name' value = {this.state.doodleId}/>
-                    <input type="password" className = 'createinput' onChange = {(e) => {this.handleChange('doodlePassword', e.target.value)}} placeholder = 'Password' value = {this.state.doodlePassword}/>
-                    <Link to='/canvas'><button  className = 'dashbutton' onClick = {() => this.createDoodle()}><img className = 'dashicon' src={createwhite} alt=""/><img className = 'imagehover' src={createblue} alt=""/>Create</button></Link>
+                    <input type="password" onKeyDown={this.keyPress} className = 'createinput' onChange = {(e) => {this.handleChange('doodlePassword', e.target.value)}} placeholder = 'Password' value = {this.state.doodlePassword}/>
+                    <button  className = 'dashbutton' onClick = {() => this.createDoodle()}><img className = 'dashicon' src={createwhite} alt=""/><img className = 'imagehover' src={createblue} alt=""/>Create</button>
                     
                     <div className = 'createbottom'>
                         
@@ -124,4 +127,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {getUserData, newDoodle})(Creator);
+export default connect(mapStateToProps, {getUserData, newDoodle, joinDoodle})(Creator);
