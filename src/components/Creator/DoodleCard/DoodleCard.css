@@ -1,0 +1,38 @@
+.doodlecard {
+    height: 250px;
+    width: 425px;
+    background: #2AABE2;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: stretch;
+    margin-top: 15px;
+}
+
+.doodlejoin {
+    background: white;
+    color: #2AABE2;
+    border: none;
+    border-radius: 10px;
+    height: 38px;
+    width: 145px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.doodlejoin:hover {
+    transform: scale(1.10);
+}
+
+.doodlecardtext {
+    font-size: 23px;
+}
+
+.joindoodleicon {
+    height: 20px;
+}

@@ -1,0 +1,37 @@
+.sitefooter {
+    height: 150px;
+    background-color: #252525;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+  }
+
+  .footlogo {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: center;
+    height: 50px;
+    margin-right: 20px;
+  }
+
+  .footwelcome {
+    font-size: 60px;
+    font-family: 'Ceviche One', cursive;
+    margin-bottom: 0px;
+    color: white;
+  }
+
+
+
+  .footfollow {
+      text-align: center;
+      font-size: 32px;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+  }

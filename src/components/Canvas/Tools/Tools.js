@@ -17,3 +17,8 @@ export {
     default as Rectangle,
     TOOL_RECTANGLE
   } from './Rectangle';
+
+  export {
+    default as Eraser,
+    TOOL_ERASER
+  } from './Eraser';

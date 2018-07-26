@@ -6,6 +6,7 @@ import Canvas from './components/Canvas/Canvas';
 import Chat from './components/Chat/Chat';
 import Editprofile from './components/Editprofile.js/Editprofile';
 import Creator from './components/Creator/Creator';
+import Loading from './components/Loading/Loading';
 
 
 export default (
@@ -16,5 +17,6 @@ export default (
         <Route component = {Chat} path='/chat'/>
         <Route component = {Editprofile} path = '/editprofile'/>
         <Route component = {Creator} path = '/creator'/>
+        <Route component = {Loading} path = '/loading'/>
     </Switch>
 )

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import './Editprofile.css';
 import { Link } from 'react-router-dom';
+import avatar from './../../images/avatar.jpg';
 
 class Dashboard extends Component {
     constructor(props){
@@ -28,16 +29,18 @@ class Dashboard extends Component {
     });
     }
 
+
+
     updateUser = (obj) => {
-        
         axios.post('/api/update', obj)
         .then( () => {
-            this.props.updateUserData(this.state)
+            console.log(obj)
+            this.props.updateUserData(obj)
         })  
     }
 
     deleteUser = () => {
-        axios.delete('api/delete')
+        axios.delete('/api/delete')
     }
 
     handleChange(property, value) {
@@ -55,20 +58,21 @@ class Dashboard extends Component {
         
 
         return(
-           <div>
-               <h3>Dashboard</h3>
-               { user.user_pic ? <img src = {user.user_pic} alt = ''/> : null }
-               <h4>Profile Picture:</h4>
-               <input type="text" onChange = {(e) => {this.handleChange('user_pic', e.target.value)}} placeholder = 'Profile Picture URL' value = {this.state.user_pic}/>
-               <h4>Username:</h4>
-               <input type="text" onChange = {(e) => {this.handleChange('user_name', e.target.value)}} placeholder = 'Username' value = {this.state.user_name}/>
-               <Link to='/dashboard'><button onClick = {() => this.updateUser(this.state)} >Update Profile</button></Link>
-                <br />
-
-               <Link to='/'><button onClick = {() => this.deleteUser()}>Delete Profile</button></Link>
-
+            <div className = 'editboard'>
+                <div className = 'editcard'>
+                    <div className = 'edittop'>
+                        <img src = { user.user_pic ? user.user_pic : avatar } className = 'dashpic' alt = 'profilepic'/>  
+                        <h4 className = 'user-name1'>Profile Picture:</h4>
+                        <input className = 'editinput' type="text" onChange = {(e) => {this.handleChange('user_pic', e.target.value)}} placeholder = 'Profile Picture URL' value = {this.state.user_pic}/>
+                        <h4  className = 'user-name1'>Username:</h4>
+                        <input className = 'editinput' type="text" onChange = {(e) => {this.handleChange('user_name', e.target.value)}} placeholder = 'Username' value = {this.state.user_name}/>
+                    </div>
+                    <Link to='/dashboard'><button className = 'dashbutton' onClick = {() => this.updateUser(this.state)} >Update Profile</button></Link>
+                    <Link to='/dashboard'><button className = 'dashbutton'>Back to Dashboard</button></Link>
+                    <Link to='/'><button className = 'editbutton' onClick = {() => this.deleteUser()}>Delete Profile</button></Link>
+                </div>
         
-           </div>
+            </div>
         )
     }
 }
