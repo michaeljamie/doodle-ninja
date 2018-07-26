@@ -19,10 +19,7 @@ export default class App extends Component {
   }
 
   componentDidMount = () => {
-    setTimeout(()=>
-    this.setState({loading: false}), 1500
-    )
-    
+    this.setState({loading: false})
   }
 
 
@@ -40,9 +37,9 @@ export default class App extends Component {
           <Loading />
         :
           <div>
-            {currentPath === 'http://localhost:3000/#/' ? '' : <Nav />  }
+            {currentPath === `${window.origin}/#/` ? '' : <Nav />  }
             {routes}
-            {currentPath === 'http://localhost:3000/#/canvas' ? '' : <Footer />  }
+            {currentPath === `${window.origin}/#/canvas` ? '' : <Footer />  }
           </div>}
       </div>
     );

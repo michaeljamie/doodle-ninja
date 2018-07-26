@@ -1,6 +1,13 @@
 {
   "name": "doodle-ninja",
-  "proxy": "http://localhost:3005",
+  "proxy": {
+    "/api":{
+      "target":"http://localhost:3005"
+    },
+    "/auth":{
+      "target":"http://localhost:3005"
+    }
+  }, 
   "main": "./server/server.js",
   "version": "0.1.0",
   "private": true,

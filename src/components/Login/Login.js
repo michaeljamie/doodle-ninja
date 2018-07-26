@@ -13,8 +13,8 @@ import createblue from './../../images/createblue.png';
 import collaborateblue from './../../images/collaborateblue.png';
 import integrateblue from './../../images/integrateblue.png';
 import bluechevron from './../../images/bluechevron.png';
-import bkgd from './../../images/bkgd.jpg';
-import Particles from 'react-particles-js';
+// import bkgd from './../../images/bkgd.jpg';
+// import Particles from 'react-particles-js';
 
 
 export default function Login(){
@@ -24,7 +24,7 @@ export default function Login(){
 function login(){
     let { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID } = process.env;
 
-    let redirectUri = encodeURIComponent(`http://localhost:3005/auth/callback`);
+    let redirectUri = encodeURIComponent(`${window.origin}/auth/callback`);
 
     window.location = `https://${REACT_APP_DOMAIN}/authorize?client_id=${REACT_APP_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`;
 }
