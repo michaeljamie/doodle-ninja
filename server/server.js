@@ -24,6 +24,7 @@ const app = express()
         socket.emit("welcome", {user: socket.id})
         
         socket.on('message sent', data => {
+          console.log(data)
             const { id, user_name, user_pic, message, currentdoodleid } = data;
             const response = {
                 id: id,
@@ -33,6 +34,7 @@ const app = express()
                 currentdoodleid: currentdoodleid
           }
           io.emit(`message dispatched`, response);
+          console.log(response)
         });
 
         socket.on('addItem', data => {

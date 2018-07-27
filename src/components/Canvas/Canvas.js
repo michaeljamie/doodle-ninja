@@ -128,7 +128,7 @@ class Canvas extends Component {
               <div className = 'sketcherpad'>
                 <SketchPad
                     width={1110}
-                    height={800}
+                    height={700}
                     animate={true}
                     size={size}
                     color={color}

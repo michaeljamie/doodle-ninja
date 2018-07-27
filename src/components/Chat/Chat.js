@@ -108,5 +108,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(Chat);
-
-

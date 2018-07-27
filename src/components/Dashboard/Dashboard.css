@@ -14,7 +14,7 @@
 	justify-content: space-around;
 	align-items: flex-start;
     align-content: center;
-    width: 75vw;
+    width: 78vw;
     height: 800px;
     background-color: whitesmoke;
 }
@@ -22,7 +22,7 @@
 .dashcard {
     border: 4px black;
     height: 800px;
-    width: 25vw;
+    width: 22vw;
     background: white;
     transition: all .2s ease-in-out;
     display: flex;
@@ -36,8 +36,8 @@
 .dashcardright {
     margin-top: 50px;
     border: 4px black;
-    height: 505px;
-    width: 500px;
+    height: 470px;
+    width: 400px;
     background: white;
     transition: all .2s ease-in-out;
     display: flex;
@@ -59,7 +59,7 @@
 }
 
 .dashtop {
-    width: 650px;
+    width: 22vw;
     height: 382px;
     margin-top: 0px;
     background: #2AABE2;
@@ -72,8 +72,8 @@
 }
 
 .dashrighttop {
-    width: 500px;
-    height: 130px;
+    width: 400px;
+    height: 100px;
     margin-top: 0px;
     background: #2AABE2;
     display: flex;
@@ -130,14 +130,14 @@
 
 .user-name {
     color: white;
-    font-size: 45px;
+    font-size: 40px;
     font-family: 'Roboto', sans-serif;
     margin-top: 18px;
 }
     
 
 .dashicon {
-    height: 26px;
+    height: 20px;
     margin-right: 9px;
 }
 
@@ -157,7 +157,7 @@
     background: white;
     margin-top: 50px;
     margin-bottom: 50px;
-    height: 680px;
+    height: 660px;
     width: 680px;
     display: flex;
     transition: all .2s ease-in-out;
