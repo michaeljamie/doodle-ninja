@@ -75,7 +75,7 @@ class DrawingCard extends Component{
         const { drawing } = this.props; 
         return (
             <div className = 'drawingcard'>
-                <img src={drawing} className = 'drawingimg' alt=""/>
+                <img src={drawing} className = 'drawnimg' alt=""/>
                 
                 <button className = 'drawingjoin' onClick = {this.saveDrawing}>Save</button>
                 <button className = 'drawingjoin' onClick = {this.props.delete}>Delete</button>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUserData, newDoodle, joinDoodle } from './../../ducks/reducer';
+import { getUserData, newDoodle, joinDoodle, updateUsers } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './Creator.css';
@@ -23,12 +23,15 @@ class Creator extends Component {
         }
     }
     componentDidMount() {
+        axios.get('/api/users-data').then(res => {
+            this.props.updateUsers({users: res.data})
+        });
         axios.get('/api/user-data').then(res => {
             this.props.getUserData(res.data)
-    });
+        });
         axios.get('/api/doodles').then(res => {
             this.setState({doodles: res.data})
-    });
+        });
     }
   
     handleChange = (property, value) => {
@@ -127,4 +130,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {getUserData, newDoodle, joinDoodle})(Creator);
+export default connect(mapStateToProps, {getUserData, newDoodle, joinDoodle, updateUsers})(Creator);

@@ -52,6 +52,12 @@
     border-radius: 30px;
     font-family: 'Roboto', sans-serif;
     color: white;    
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: stretch;
 }
 
 .downloadtop {
@@ -61,12 +67,13 @@
 	justify-content: center;
 	align-items: flex-end;
     align-content: stretch;
+    width: 700px;
     height: 80px;
 }
 
 .downloadbox {
-    height: 400px;
-    width: 600px;
+    height: 420px;
+    width: 575px;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -74,6 +81,8 @@
 	align-items: center;
 	align-content: center;
     overflow-y: scroll;
+    background: white;
+    margin-bottom: 15px;
 }
 
 .closeicon {
@@ -88,12 +97,18 @@
 }
 
 .downloads {
+    height: 250px;
+    width: 375px;
     display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: space-around;
 	align-items: center;
-	align-content: center;
+    align-content: center;
+    background: #2AABE2;
+    border-radius: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .downloadjoin {
@@ -104,13 +119,18 @@
     border: none;
     border-radius: 10px;
     height: 32px;
-    width: 300px;
+    width: 270px;
     font-size: 26px;
     cursor: pointer;
 }
 
 .downloadjoin:hover {
     transform: scale(1.10);
+}
+
+.drawingimg {
+    height: 160px;
+    width: 225px;
 }
 
 

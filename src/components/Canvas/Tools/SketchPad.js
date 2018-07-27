@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 import { EmailShareButton } from 'react-share';
 
 
-const socket = io()
+const socket = io(`http://localhost:3005`)
 
 export const toolsMap = {
     [TOOL_PENCIL]: Pencil,

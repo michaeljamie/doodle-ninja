@@ -4,10 +4,9 @@ import './Chat.css';
 import { connect } from 'react-redux';
 import ChatBox from './ChatBox/Chatbox';
 import chaticon from './../../images/chaticon.png';
+import axios from 'axios';
 
-// import axios from 'axios';
-
-const socket = io()
+const socket = io(`http://localhost:3005`)
 
 
 
@@ -20,14 +19,16 @@ class Chat extends Component {
         message: '',
         messages: []
     }
+
+    
   }
 
     componentDidMount = () => {
-    //     axios.get('/api/users-data').then(res => {
-    //         this.setState({users: res})
-    // });
+        axios.get('/api/user-data').then(res => {
+            this.setState({users: res})
+    });
         
-        socket.on(`message dispatched`, data => {
+        socket.on(`chat-${this.props.user.currentdoodleid}`, data => {
             const messages = [ ...this.state.messages, data]
             this.setState({messages})
         })
@@ -45,7 +46,8 @@ class Chat extends Component {
             id: this.props.user.id,
             user_name: this.props.user.user_name,
             user_pic: this.props.user.user_pic,
-            message: this.refs.message.value
+            message: this.refs.message.value,
+            currentdoodleid: this.props.user.currentdoodleid
           }
         socket.emit('message sent', obj)
         this.refs.message.value = '';
@@ -56,6 +58,17 @@ class Chat extends Component {
               this.sendMessage();
           }
       }
+
+      scrollToBottom() {
+        const scrollHeight = this.messageList.scrollHeight;
+        const height = this.messageList.clientHeight;
+        const maxScrollTop = scrollHeight - height;
+        this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+    }
+    
+    componentDidUpdate() {
+        this.scrollToBottom()
+    }
   
 
   render(){
@@ -84,7 +97,7 @@ class Chat extends Component {
       
       
       <div className = 'chat'>
-            <div className="messages">
+            <div ref={(div) => { this.messageList = div }} className="messages">
                 { messages[0] ? messages : null}
             </div>
         <div className="input">

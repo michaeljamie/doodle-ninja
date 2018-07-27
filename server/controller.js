@@ -16,6 +16,18 @@ module.exports = {
         console.log(users)
     },
 
+    updateUsers: (req, res) => {
+
+        req.app.get('db').fetch_users()
+        .then( users => res.status(200).send( users ) )
+        .catch( err => {
+            res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+            console.log(err)
+        });
+
+    },
+
+
     fetch: (req, res) => {
 
         req.app.get('db').get_doodles()
@@ -50,6 +62,18 @@ module.exports = {
           });
     },
 
+    getUsersById: (req, res) => {
+        console.log('params =', req.params)
+        
+      
+        req.app.get('db').getby_doodleid([req.params.id])
+        .then( users => res.status(200).send( users ) )
+        .catch( err => {
+          console.log(err)
+        });
+        
+    },
+
 
 
     delete: ( req, res) => {
@@ -60,7 +84,7 @@ module.exports = {
     deleteDrawing: ( req, res) => {
         const { auth_id } = req.session.user;
         const { id } = req.params;
-        console.log(5555555, req.params)
+        
         req.app.get('db').delete_drawing([ id ])
         .then(
         req.app.get('db').get_drawings([auth_id])
@@ -101,7 +125,7 @@ module.exports = {
     updateUser: (req, res) => {
         const { auth_id } = req.session.user;
         const { doodleId } = req.body;
-        console.log(auth_id, doodleId)
+        
 
         req.app.get('db').update([auth_id, doodleId])
         .then( user => res.status(200).send(user[0]))

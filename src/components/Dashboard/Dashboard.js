@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUserData, newDoodle } from './../../ducks/reducer';
+import { getUserData, newDoodle, updateUsers } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './Dashboard.css';
@@ -34,8 +34,12 @@ class Dashboard extends Component {
     componentDidMount() {
         axios.get('/api/user-data').then(res => {
             this.props.getUserData(res.data)
-            
-    });
+        });
+        axios.get('/api/users-data').then(res => {
+            console.log(res)
+            console.log(res.data)
+            this.props.updateUsers(res.data)
+        });
         axios.get('/api/drawings').then(res => {
             
             this.setState({drawings: res.data})
@@ -163,4 +167,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {getUserData})(Dashboard);
+export default connect(mapStateToProps, {getUserData, newDoodle, updateUsers})(Dashboard);

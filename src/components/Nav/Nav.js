@@ -5,6 +5,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import { connect } from 'react-redux';
+import { joinDoodle } from './../../ducks/reducer';
 import ninja from './../../images/ninja.png';
 import ninjablack from './../../images/ninjablack.png';
 import facebooklogo from './../../images/facebooklogo.png';
@@ -65,9 +66,9 @@ class Nav extends Component {
                         </div>
                     </Link>
                 <div>
-                    <a href="http://www.facebook.com"><img className = 'social' src={facebooklogo} alt=""/></a>
-                    <a href="http://www.twitter.com"><img className = 'social2' src={twitterlogo} alt=""/></a>
-                    <a href="http://www.instagram.com"><img className = 'social' src={instagramlogo} alt=""/></a> 
+                    <a target = "_blank" href="http://www.facebook.com"><img className = 'navsocial' src={facebooklogo} alt=""/></a>
+                    <a target = "_blank" href="http://www.twitter.com"><img className = 'navsocial2' src={twitterlogo} alt=""/></a>
+                    <a target = "_blank" href="http://www.instagram.com"><img className = 'navsocial' src={instagramlogo} alt=""/></a> 
                 </div>
             </div>
         )
@@ -80,6 +81,6 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, {joinDoodle})(Nav);
 
 

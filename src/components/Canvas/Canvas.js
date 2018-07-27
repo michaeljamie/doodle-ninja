@@ -6,9 +6,11 @@ import {TOOL_RECTANGLE} from './Tools/Rectangle';
 import {TOOL_ELLIPSE} from './Tools/Ellipse';
 import {TOOL_ERASER} from './Tools/Eraser';
 import axios from 'axios';
-import { getUserData } from './../../ducks/reducer';
+import { getUserData, joinDoodle, updateUsers, updateRoom} from './../../ducks/reducer';
 import Chat from './../Chat/Chat';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Avatar from './Avatar/Avatar';
 import './Canvas.css';
 import io from 'socket.io-client';
 import pencilicon from './../../images/pencilicon.png';
@@ -19,9 +21,9 @@ import circleicon from './../../images/circleicon.png';
 import coloricon from './../../images/coloricon.png';
 import sizeicon from './../../images/sizeicon.png';
 
-//comment
 
-const socket = io()
+
+const socket = io(`http://localhost:3005`)
 
 
 
@@ -41,7 +43,9 @@ class Canvas extends Component {
         fillColor: '#252525',
         items: [],
         drawing: false,
-        currentArtistPic: ''
+        currentArtistPic: '',
+        otherUsers: []
+
     }
 
 
@@ -50,13 +54,19 @@ class Canvas extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props.user.currentdoodleid)
+    axios.get(`/api/users/${this.props.user.currentdoodleid}`).then(res => {
+      this.setState({otherUsers: res.data})
+    })
+
     axios.get('/api/user-data').then(res => {
       this.props.getUserData(res.data)
   });
     axios.get('/api/doodles').then(res => {
       this.setState({doodles: res.data})
   });
-    socket.on(`addItems`, response => {
+
+    socket.on(`draw-${this.props.user.currentdoodleid}`, response => {
  
       const {i, sockcurrentdoodleid, sockusername, sockuserpic} = response;
       this.setState({currentArtistPic: sockuserpic})
@@ -66,18 +76,52 @@ class Canvas extends Component {
     } );
 }
 
+componentDidUpdate(prevProps) {
+  let flag = false;
+  for (const prop in this.props) {
+      if (this.props[prop] !== prevProps[prop]) {
+          flag = true;
+      }
+  }
+  if (flag) {
+    axios.get(`/api/users/${this.props.user.currentdoodleid}`).then(res => {
+      this.setState({otherUsers: res.data})
+      })
+  }
+}
+
+
+
   
   
-  
+  leaveDoodle = () => {
+    this.props.updateRoom({currentdoodleid: null})
+    this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: null})
+  }
  
   
   
 
   render() {
-    const { tool, size, color, fill, fillColor, items } = this.state;
+    const { tool, size, color, fill, fillColor, items} = this.state;
     var TOOL_COLOR;
     var TOOL_SIZE;
-  
+
+    console.log('otherusers =', this.state.otherUsers)
+   const usersArr = this.state.otherUsers.map((e, i) => {
+      return (
+        <div className = 'userAvatars' key = {i}> 
+          <img src={e.user_pic} className = 'userAvatar' alt=""/>
+        </div>
+        //  <Avatar 
+        //  key = {i}
+        //  userObj = {e}
+        //  />
+
+        
+      ); 
+    
+   })
     return (
       
       
@@ -139,9 +183,12 @@ class Canvas extends Component {
                     />
                 </div>
             </div>
+            <div className = 'loggedUsers'>
+              {usersArr}
+            </div>
             <div className = 'chatbox'>
-            <h2></h2>
-
+            <Link to='/creator'><button className = 'leavebutton' onClick = {() => this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: null})}>Leave Room</button></Link>
+            
             <Chat/>
             </div>    
         
@@ -154,8 +201,9 @@ class Canvas extends Component {
 
 function mapStateToProps(state){
   return {
-      user: state.user
+      user: state.user,
+      users: state.users
   };
 }
 
-export default connect(mapStateToProps, {getUserData})(Canvas);
+export default connect(mapStateToProps, {getUserData, joinDoodle, updateUsers, updateRoom})(Canvas);

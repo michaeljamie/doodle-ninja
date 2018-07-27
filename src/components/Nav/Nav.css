@@ -13,6 +13,26 @@
     height: 38px;
 }
 
+.navsocial {
+    height: 35px;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+
+  .navsocial2 {
+    height: 35px;
+    margin-right: 28px;
+    margin-top: 10px;
+  }
+
+  .navsocial:hover {
+    transform: scale(1.20);
+  }
+
+  .navsocial2:hover {
+    transform: scale(1.20);
+  }
+
 .menuicon {
     height: 18px;
     margin-right: 7px;

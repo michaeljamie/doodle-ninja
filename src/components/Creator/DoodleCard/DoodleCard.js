@@ -7,7 +7,7 @@ import joinblue from './../../../images/joinblue.png';
 import { ToastContainer, toast } from 'react-toastify';
 import io from 'socket.io-client';
 
-const socket = io()
+const socket = io(process.env.SOCKET)
 
 class DoodleCard extends Component{
     constructor(){
