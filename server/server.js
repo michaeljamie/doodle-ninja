@@ -33,7 +33,8 @@ const app = express()
                 message: message,
                 currentdoodleid: currentdoodleid
           }
-          io.emit(`chat-${currentdoodleid}`, response);
+          // `chat-${currentdoodleid}`
+          io.emit(`chat`, response);
           console.log(response)
         });
 
@@ -46,7 +47,8 @@ const app = express()
             sockuserpic: userpic
           }
           console.log('datapoints', i)
-            socket.broadcast.emit(`draw-${currentdoodleid}`, response)
+          // `draw-${currentdoodleid}`
+            socket.broadcast.emit(`draw`, response)
         });
 
         socket.on('sendImage', data => {

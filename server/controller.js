@@ -13,7 +13,7 @@ module.exports = {
             res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
             console.log(err)
         });
-        console.log(users)
+        
     },
 
     updateUsers: (req, res) => {
@@ -63,9 +63,7 @@ module.exports = {
     },
 
     getUsersById: (req, res) => {
-        console.log('params =', req.params)
         
-      
         req.app.get('db').getby_doodleid([req.params.id])
         .then( users => res.status(200).send( users ) )
         .catch( err => {

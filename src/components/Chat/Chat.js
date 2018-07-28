@@ -6,7 +6,7 @@ import ChatBox from './ChatBox/Chatbox';
 import chaticon from './../../images/chaticon.png';
 import axios from 'axios';
 
-const socket = io(`http://localhost:3005`)
+const socket = io(process.env.SOCKET)
 
 
 
@@ -27,8 +27,8 @@ class Chat extends Component {
         axios.get('/api/user-data').then(res => {
             this.setState({users: res})
     });
-        
-        socket.on(`chat-${this.props.user.currentdoodleid}`, data => {
+    // `chat-${this.props.user.currentdoodleid}`
+        socket.on(`chat`, data => {
             const messages = [ ...this.state.messages, data]
             this.setState({messages})
         })

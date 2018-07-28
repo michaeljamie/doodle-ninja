@@ -23,7 +23,7 @@ import sizeicon from './../../images/sizeicon.png';
 
 
 
-const socket = io(`http://localhost:3005`)
+const socket = io(process.env.SOCKET)
 
 
 
@@ -65,8 +65,8 @@ class Canvas extends Component {
     axios.get('/api/doodles').then(res => {
       this.setState({doodles: res.data})
   });
-
-    socket.on(`draw-${this.props.user.currentdoodleid}`, response => {
+  // `draw-${this.props.user.currentdoodleid}`
+    socket.on(`draw`, response => {
  
       const {i, sockcurrentdoodleid, sockusername, sockuserpic} = response;
       this.setState({currentArtistPic: sockuserpic})
@@ -76,19 +76,19 @@ class Canvas extends Component {
     } );
 }
 
-componentDidUpdate(prevProps) {
-  let flag = false;
-  for (const prop in this.props) {
-      if (this.props[prop] !== prevProps[prop]) {
-          flag = true;
-      }
-  }
-  if (flag) {
-    axios.get(`/api/users/${this.props.user.currentdoodleid}`).then(res => {
-      this.setState({otherUsers: res.data})
-      })
-  }
-}
+// componentDidUpdate(prevProps) {
+//   let flag = false;
+//   for (const prop in this.props) {
+//       if (this.props[prop] !== prevProps[prop]) {
+//           flag = true;
+//       }
+//   }
+//   if (flag) {
+//     axios.get(`/api/users/${this.props.user.currentdoodleid}`).then(res => {
+//       this.setState({otherUsers: res.data})
+//       })
+//   }
+// }
 
 
 

@@ -15,8 +15,8 @@
 	align-items: center;
 	align-content: stretch;
 	background-color: whitesmoke;
-	height: 88vh;
-	overflow: auto;
+	max-height: 88vh;
+	overflow: hidden;
 }
 
 .chatbox {
