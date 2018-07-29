@@ -21,7 +21,24 @@ const app = express()
 
         console.log('User Connected');
 
+
+
         socket.emit("welcome", {user: socket.id})
+
+        socket.on('join', data => {
+          console.log('join data =', data)
+          
+          socket.join(data)
+          console.log('client joined room =', data)
+        })
+
+        socket.on('joinexisting', data => {
+          console.log('join existing data =', data)
+
+          socket.join(data)
+          console.log('client joined room =', data)
+
+        })
         
         socket.on('message sent', data => {
           console.log(data)
@@ -33,9 +50,9 @@ const app = express()
                 message: message,
                 currentdoodleid: currentdoodleid
           }
-          // `chat-${currentdoodleid}`
-          io.emit(`chat`, response);
-          console.log(response)
+          console.log('currentdoodleid', currentdoodleid)
+          io.to(currentdoodleid).emit('chat', response);
+          console.log('message sent to=', currentdoodleid)
         });
 
         socket.on('addItem', data => {
@@ -46,10 +63,19 @@ const app = express()
             sockusername: username,
             sockuserpic: userpic
           }
-          console.log('datapoints', i)
-          // `draw-${currentdoodleid}`
-            socket.broadcast.emit(`draw`, response)
+          
+          console.log('currentdoodleid', currentdoodleid)
+            socket.broadcast.to(currentdoodleid).emit('draw', response)
+            console.log('drawing sent to=', currentdoodleid)
         });
+
+
+        socket.on('leave', data => {
+          console.log('leave data =', data)
+
+          socket.leave(data)
+          console.log('client left room =', data)
+        })
 
         socket.on('sendImage', data => {
           const {imageUrl} = data;

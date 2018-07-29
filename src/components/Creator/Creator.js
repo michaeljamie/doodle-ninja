@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUserData, newDoodle, joinDoodle, updateUsers } from './../../ducks/reducer';
+import { getUserData, newDoodle, joinDoodle, updateUsers, setCurrentDoodle } from './../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import './Creator.css';
@@ -9,8 +9,10 @@ import createwhite from './../../images/createwhite.png';
 import createblue from './../../images/createblue.png';
 import doodleidea from './../../images/doodleidea.png';
 import checkblue from './../../images/checkblue.png';
+import io from 'socket.io-client';
 
 
+const socket = io(`http://localhost:3005`)
 
 class Creator extends Component {
     constructor(){
@@ -42,6 +44,8 @@ class Creator extends Component {
 
     createDoodle = () => {
         if(this.state.doodleId && this.state.doodlePassword){
+            socket.emit('join', this.state.doodleId)
+            this.props.setCurrentDoodle(this.state.doodleId);
             const doodleObj = {
                 doodleId: this.state.doodleId,
                 doodlePassword: this.state.doodlePassword
@@ -130,4 +134,4 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {getUserData, newDoodle, joinDoodle, updateUsers})(Creator);
+export default connect(mapStateToProps, {getUserData, newDoodle, joinDoodle, updateUsers, setCurrentDoodle})(Creator);

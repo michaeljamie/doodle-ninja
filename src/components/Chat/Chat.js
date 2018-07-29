@@ -6,7 +6,8 @@ import ChatBox from './ChatBox/Chatbox';
 import chaticon from './../../images/chaticon.png';
 import axios from 'axios';
 
-const socket = io(process.env.SOCKET)
+
+const socket = io(`http://localhost:3005`)
 
 
 
@@ -28,7 +29,7 @@ class Chat extends Component {
             this.setState({users: res})
     });
     // `chat-${this.props.user.currentdoodleid}`
-        socket.on(`chat`, data => {
+        socket.on('chat', data => {
             const messages = [ ...this.state.messages, data]
             this.setState({messages})
         })
@@ -42,12 +43,13 @@ class Chat extends Component {
       }
     
       sendMessage = () => {
+          console.log('chatsend=', this.props.doodleName)
           var obj = {
             id: this.props.user.id,
             user_name: this.props.user.user_name,
             user_pic: this.props.user.user_pic,
             message: this.refs.message.value,
-            currentdoodleid: this.props.user.currentdoodleid
+            currentdoodleid: this.props.doodleName
           }
         socket.emit('message sent', obj)
         this.refs.message.value = '';
@@ -116,7 +118,8 @@ class Chat extends Component {
 
 function mapStateToProps(state){
     return {
-        user: state.user
+        user: state.user,
+        doodleName: state.doodleName
     };
 }
 

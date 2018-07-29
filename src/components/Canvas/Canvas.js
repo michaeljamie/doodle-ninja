@@ -6,7 +6,7 @@ import {TOOL_RECTANGLE} from './Tools/Rectangle';
 import {TOOL_ELLIPSE} from './Tools/Ellipse';
 import {TOOL_ERASER} from './Tools/Eraser';
 import axios from 'axios';
-import { getUserData, joinDoodle, updateUsers, updateRoom} from './../../ducks/reducer';
+import { getUserData, joinDoodle, updateUsers, updateRoom, setCurrentDoodle} from './../../ducks/reducer';
 import Chat from './../Chat/Chat';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ import sizeicon from './../../images/sizeicon.png';
 
 
 
-const socket = io(process.env.SOCKET)
+const socket = io(`http://localhost:3005`)
 
 
 
@@ -44,7 +44,8 @@ class Canvas extends Component {
         items: [],
         drawing: false,
         currentArtistPic: '',
-        otherUsers: []
+        otherUsers: [],
+        drawings: []
 
     }
 
@@ -54,7 +55,11 @@ class Canvas extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.user.currentdoodleid)
+    axios.get('/api/doodles').then(res => {
+      this.setState({doodles: res.data})
+  });
+
+
     axios.get(`/api/users/${this.props.user.currentdoodleid}`).then(res => {
       this.setState({otherUsers: res.data})
     })
@@ -62,15 +67,13 @@ class Canvas extends Component {
     axios.get('/api/user-data').then(res => {
       this.props.getUserData(res.data)
   });
-    axios.get('/api/doodles').then(res => {
-      this.setState({doodles: res.data})
-  });
+
   // `draw-${this.props.user.currentdoodleid}`
-    socket.on(`draw`, response => {
+    socket.on('draw', response => {
  
       const {i, sockcurrentdoodleid, sockusername, sockuserpic} = response;
-      this.setState({currentArtistPic: sockuserpic})
-      this.setState({ drawing: true })
+      // this.setState({currentArtistPic: sockuserpic})
+      // this.setState({ drawing: true })
       this.setState({items: this.state.items.concat([i])})
       
     } );
@@ -95,6 +98,9 @@ class Canvas extends Component {
   
   
   leaveDoodle = () => {
+    console.log('this.props.doodleName=', this.props.doodleName)
+    socket.emit('leave', this.props.doodleName)
+    this.props.setCurrentDoodle(null);
     this.props.updateRoom({currentdoodleid: null})
     this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: null})
   }
@@ -106,8 +112,9 @@ class Canvas extends Component {
     const { tool, size, color, fill, fillColor, items} = this.state;
     var TOOL_COLOR;
     var TOOL_SIZE;
+    
 
-    console.log('otherusers =', this.state.otherUsers)
+    
    const usersArr = this.state.otherUsers.map((e, i) => {
       return (
         <div className = 'userAvatars' key = {i}> 
@@ -179,7 +186,7 @@ class Canvas extends Component {
                     fillColor={fill ? fillColor : ''}
                     items={items}
                     tool={tool}
-                    onCompleteItem={(i) => socket.emit('addItem', {i, currentdoodleid: this.props.user.currentdoodleid, userpic: this.props.user.user_pic, username: this.props.user.user_name})}
+                    onCompleteItem={(i) => socket.emit('addItem', {i, currentdoodleid: this.props.doodleName, userpic: this.props.user.user_pic, username: this.props.user.user_name})}
                     />
                 </div>
             </div>
@@ -187,7 +194,7 @@ class Canvas extends Component {
               {usersArr}
             </div>
             <div className = 'chatbox'>
-            <Link to='/creator'><button className = 'leavebutton' onClick = {() => this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: null})}>Leave Room</button></Link>
+            <Link to='/creator'><button className = 'leavebutton' onClick = {() => this.leaveDoodle()}>Leave Room</button></Link>
             
             <Chat/>
             </div>    
@@ -202,8 +209,9 @@ class Canvas extends Component {
 function mapStateToProps(state){
   return {
       user: state.user,
-      users: state.users
+      users: state.users,
+      doodleName: state.doodleName
   };
 }
 
-export default connect(mapStateToProps, {getUserData, joinDoodle, updateUsers, updateRoom})(Canvas);
+export default connect(mapStateToProps, {getUserData, joinDoodle, updateUsers, updateRoom, setCurrentDoodle})(Canvas);

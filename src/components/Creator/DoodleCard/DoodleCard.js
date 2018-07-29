@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newDoodle, joinDoodle } from './../../../ducks/reducer';
+import { newDoodle, joinDoodle, setCurrentDoodle } from './../../../ducks/reducer';
 import { Redirect } from 'react-router-dom';
 import './DoodleCard.css';
 import joinblue from './../../../images/joinblue.png';
 import { ToastContainer, toast } from 'react-toastify';
 import io from 'socket.io-client';
 
-const socket = io(process.env.SOCKET)
+const socket = io(`http://localhost:3005`)
 
 class DoodleCard extends Component{
     constructor(){
@@ -27,6 +27,8 @@ class DoodleCard extends Component{
 
     joinExistingDoodle = () => {
         if(this.state.input === this.props.doodleObj.doodlepassword) {
+            socket.emit('joinexisting', this.props.doodleObj.doodleid)
+            this.props.setCurrentDoodle(this.props.doodleObj.doodleid);
             this.setState({input: '', redirect: true})
             this.props.joinDoodle({user_name: this.props.user.user_name, doodleId: this.props.doodleObj.doodleid})
             
@@ -90,5 +92,5 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps, {newDoodle, joinDoodle})(DoodleCard);
+export default connect(mapStateToProps, {newDoodle, joinDoodle, setCurrentDoodle})(DoodleCard);
 

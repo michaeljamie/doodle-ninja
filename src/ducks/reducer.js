@@ -5,7 +5,8 @@ const initialState = {
     user: {},
     doodle: {},
     drawing: {},
-    users: []
+    users: [],
+    doodleName: ''
 
 }
 
@@ -16,12 +17,15 @@ const USER_DRAWING = 'USER_DRAWING';
 const JOIN_DOODLE = 'JOIN_DOODLE';
 const UPDATE_USERS = 'UPDATE_USERS';
 const UPDATE_ROOM = 'UPDATE_ROOM';
+const GET_DOODLE = 'GET_DOODLE';
 
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
         case USER_DATA:
             return Object.assign({}, state, { user: action.payload });
+        case GET_DOODLE:
+            return Object.assign({}, state, { doodleName: action.payload });
         case USER_DRAWING:
             return Object.assign({}, state, { drawing: action.payload });
         case UPDATE_USERDATA:
@@ -40,6 +44,14 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, { user: action.payload });
         default:
             return state;
+    }
+}
+
+export function setCurrentDoodle(doodleName) {
+    console.log(doodleName)
+    return {
+        type: GET_DOODLE,
+        payload: doodleName
     }
 }
 
