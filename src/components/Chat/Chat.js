@@ -7,7 +7,7 @@ import chaticon from './../../images/chaticon.png';
 import axios from 'axios';
 
 
-const socket = io(`http://localhost:3005`)
+const socket = io()
 
 
 
@@ -25,14 +25,18 @@ class Chat extends Component {
   }
 
     componentDidMount = () => {
+        socket.on(`message dispatched-${this.props.doodleName}`, data => {
+            console.log('frontend receiving data =', data)
+            const messages = [ ...this.state.messages, data]
+            this.setState({messages})
+        })
+
+
         axios.get('/api/user-data').then(res => {
             this.setState({users: res})
     });
     // `chat-${this.props.user.currentdoodleid}`
-        socket.on('chat', data => {
-            const messages = [ ...this.state.messages, data]
-            this.setState({messages})
-        })
+
         
         socket.on('welcome', this.setUserId)
       }

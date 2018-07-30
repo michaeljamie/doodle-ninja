@@ -85,6 +85,49 @@
     margin-bottom: 15px;
 }
 
+.add_image {
+    height: 300px;
+    width: 500px;
+    background: #2AABE2;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 185px;
+    border-radius: 30px;
+    font-family: 'Roboto', sans-serif;
+    color: white;    
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+    align-content: stretch;
+}
+
+.add_imagetop {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: flex-end;
+    align-content: stretch;
+    width: 500px;
+    height: 100px;
+}
+
+.add_imagebox {
+    height: 350px;
+    width: 300px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+    
+    
+    margin-bottom: 15px;
+}
+
 .closeicon {
     height: 45px;
     margin-right: 18px;
@@ -133,5 +176,54 @@
     width: 225px;
 }
 
+.ImageButton {
+    
+    width: 290px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: white;
+    font-size: 40px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: #2AABE2;
+    margin-bottom: 0px;
+  }
+
+.ImageButton:hover {
+   
+  }
+
+.ImageButton:active {
+    background-color: #1e2c39;
+    box-shadow: 5px 8px #666;
+    transform: translateY(4px);
+  }
+
+  .ImageButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .ImageButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -30px;
+    transition: 0.5s;
+  }
+  
+  .ImageButton:hover span {
+    padding-right: 25px;
+  }
+  
+  .ImageButton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
 

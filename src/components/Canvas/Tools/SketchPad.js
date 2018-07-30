@@ -16,12 +16,13 @@ import adduser from './../../../images/adduser.png';
 import uploadwhite from './../../../images/uploadwhite.png';
 import downloadwhite from './../../../images/downloadwhite.png';
 import closewhite from './../../../images/closewhite.png';
+import addimage from './../../../images/addimage.png';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { EmailShareButton } from 'react-share';
 
 
-const socket = io(`http://localhost:3005`)
+const socket = io()
 
 export const toolsMap = {
     [TOOL_PENCIL]: Pencil,
@@ -40,7 +41,8 @@ class SketchPad extends Component {
         display: false,
         selectedDrawing: '',
         drawings: [],
-        displayDownload: false
+        displayDownload: false,
+        displayImage: false
     }
 
 
@@ -95,11 +97,15 @@ class SketchPad extends Component {
       this.setState({drawings: res.data})
 
 });
-    socket.on('addImage', data => {
+    socket.on(`addImage-${this.props.doodleName}`, data => {
       console.log('front-end data =', data)
       this.addImage(data.imageUrl);
     })
-    socket.on('downloadCanvas', data => {
+    socket.on(`clearcanvas-${this.props.doodleName}`, data => {
+      console.log('canvasdata=', data)
+      this.clearCanvas();
+    })
+    socket.on(`downloadCanvas-${this.props.doodleName}`, data => {
       console.log('data', data)
       this.addCanvas(data)
     })
@@ -139,12 +145,14 @@ class SketchPad extends Component {
     const imageObj1 = new Image();
     imageObj1.src = imgString;
     imageObj1.crossOrigin = "Anonymous";
-    // const x = Math.random() * this.props.width-300;
-    // const y = Math.random() * this.props.height-300;
+
+    var w = this.canvas.width-20;
+    var h = this.canvas.height-20;
     
     imageObj1.onload = function() {
-      ctx.drawImage(imageObj1,5,5);
+      ctx.drawImage(imageObj1,20,20, w, h);
     }
+    this.updateImgDisplay();
   }
 
   setBackground = () => {
@@ -176,9 +184,17 @@ class SketchPad extends Component {
 
   sendImage = () => {
     var imgObj = {
-      imageUrl: this.state.imageurl
+      imageUrl: this.state.imageurl,
+      currentdoodleid: this.props.doodleName
     }
     socket.emit('sendImage', imgObj)
+  }
+
+  clearSend = () => {
+    var data = {
+      currentdoodleid: this.props.doodleName
+    }
+    socket.emit('clearImage', data)
   }
 
   addText = () => {
@@ -232,12 +248,6 @@ class SketchPad extends Component {
 // }
 
 
-  handleChange(property, value) {
-    this.setState({
-  [property]: value
-})
-}
-
   initTool = (tool) => {
     this.tool = this.props.toolsMap[tool](this.ctx);
   }
@@ -281,8 +291,12 @@ class SketchPad extends Component {
   }
 
   downloadDrawing = (datastring) => {
-    socket.emit('downloadBlob', datastring)
-      
+    var data = {
+      datastring: datastring,
+      currentdoodleid: this.props.doodleName
+    }
+    socket.emit('downloadBlob', data)
+    this.updateDisplay();
 }
 
   showDisplay = () => {
@@ -292,6 +306,26 @@ class SketchPad extends Component {
   updateDisplay = () => {
     this.setState({ displayDownload: false })
   }
+
+  showImgDisplay = () => {
+    this.setState({ displayImage: true })
+  }
+
+  updateImgDisplay = () => {
+    this.setState({ displayImage: false })
+  }
+
+  keyPress = (e) => {
+    if(e.keyCode === 13){
+      this.sendImage(this.state.imageurl);
+    }
+}
+
+  handleChange = (property, value) => {
+    this.setState({
+  [property]: value
+  })
+}
 
   render() {
     const {width, height, canvasClassName} = this.props;
@@ -331,7 +365,8 @@ class SketchPad extends Component {
             <img className = 'pencilbutton' onClick = {this.uploadCanvas} src={uploadwhite} alt="upload"/>
             <img className = 'pencilbutton' onClick = {this.saveCanvas} src={save} alt="save"/>
             <img className = 'pencilbutton' onClick = {this.showDisplay} src={downloadwhite} alt="upload"/>
-            <img className = 'pencilbutton' onClick = {this.clearCanvas} src={clear} alt="clear"/>
+            <img className = 'pencilbutton' onClick = {this.showImgDisplay} src={addimage} alt="addimage"/>
+            <img className = 'pencilbutton' onClick = {this.clearSend} src={clear} alt="clear"/>
           </div>
           
        
@@ -353,6 +388,16 @@ class SketchPad extends Component {
             </div>
             <div className = 'downloadbox'>
               {downloadsArr}
+            </div>
+          </div> : ''}
+          { this.state.displayImage ?
+          <div className = 'add_image'>
+            <div className = 'add_imagetop'>
+              <img src={closewhite} onClick = {this.updateDisplay} alt="" className = 'closeicon'/>
+            </div>
+            <div className = 'add_imagebox'>
+              <input type="text" className = 'createinput' onKeyDown={this.keyPress} onChange = {(e) => {this.handleChange('imageurl', e.target.value)}} placeholder = 'Image URL' value = {this.state.imageurl}/>
+              <button className = 'ImageButton' onClick = {()=> {this.sendImage(this.state.imageurl)}}><span>Add to Canvas</span></button>
             </div>
           </div> : ''}
           <div className = 'canvasspace'>

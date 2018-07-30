@@ -23,7 +23,7 @@ import sizeicon from './../../images/sizeicon.png';
 
 
 
-const socket = io(`http://localhost:3005`)
+const socket = io()
 
 
 
@@ -69,7 +69,7 @@ class Canvas extends Component {
   });
 
   // `draw-${this.props.user.currentdoodleid}`
-    socket.on('draw', response => {
+    socket.on(`draw-${this.props.doodleName}`, response => {
  
       const {i, sockcurrentdoodleid, sockusername, sockuserpic} = response;
       // this.setState({currentArtistPic: sockuserpic})
@@ -115,20 +115,20 @@ class Canvas extends Component {
     
 
     
-   const usersArr = this.state.otherUsers.map((e, i) => {
-      return (
-        <div className = 'userAvatars' key = {i}> 
-          <img src={e.user_pic} className = 'userAvatar' alt=""/>
-        </div>
+  //  const usersArr = this.state.otherUsers.map((e, i) => {
+  //     return (
+  //       <div className = 'userAvatars' key = {i}> 
+  //         <img src={e.user_pic} className = 'userAvatar' alt=""/>
+  //       </div>
         //  <Avatar 
         //  key = {i}
         //  userObj = {e}
         //  />
 
         
-      ); 
+  //     ); 
     
-   })
+  //  })
     return (
       
       
@@ -190,9 +190,9 @@ class Canvas extends Component {
                     />
                 </div>
             </div>
-            <div className = 'loggedUsers'>
-              {usersArr}
-            </div>
+            {/* // <div className = 'loggedUsers'>
+            //   {usersArr}
+            // </div> */}
             <div className = 'chatbox'>
             <Link to='/creator'><button className = 'leavebutton' onClick = {() => this.leaveDoodle()}>Leave Room</button></Link>
             

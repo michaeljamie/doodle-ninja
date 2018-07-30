@@ -138,7 +138,7 @@ module.exports = {
         const output = `
         <div style = 'margin: 0px; height: 750px; width: 450px; background: #2AABE2';>
     
-            <img style = 'height: 140px; margin-left: 140px; margin-top: 30px;' src='https://lh3.googleusercontent.com/-Oi24UfENIVw/W1fIlkNZL2I/AAAAAAAAy1o/787LcB9kr7AHw1v-t-hWDDBY2O1HEuFJQCLcBGAs/s0/ninja.png' alt="avatar"/>
+            <img style = 'height: 140px; margin-left: 140px; margin-top: 30px;' src='https://lh3.googleusercontent.com/-Cm-4F7seaKE/W151RchQuUI/AAAAAAAAzPA/I-RekvHbiQwFQt-3TTzLmbOF4qOofPwsQCL0BGAYYCw/h362/2018-07-29.png' alt="avatar"/>
             <h3 style = 'color: white; font-size: 50px; margin-left: 65px;'>Doodle Ninja</h3>
             <p style = 'color: white; font-size: 25px;'>You have a new contact request: </p>
             <h3 style = 'color: white; font-size: 25px;'>Contact Details</h3>

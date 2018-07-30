@@ -51,7 +51,7 @@ const app = express()
                 currentdoodleid: currentdoodleid
           }
           console.log('currentdoodleid', currentdoodleid)
-          io.to(currentdoodleid).emit('chat', response);
+          io.emit(`message dispatched-${currentdoodleid}`, response);
           console.log('message sent to=', currentdoodleid)
         });
 
@@ -65,7 +65,7 @@ const app = express()
           }
           
           console.log('currentdoodleid', currentdoodleid)
-            socket.broadcast.to(currentdoodleid).emit('draw', response)
+            socket.broadcast.emit(`draw-${currentdoodleid}`, response)
             console.log('drawing sent to=', currentdoodleid)
         });
 
@@ -78,18 +78,23 @@ const app = express()
         })
 
         socket.on('sendImage', data => {
-          const {imageUrl} = data;
+          const {imageUrl, currentdoodleid} = data;
           const response = {
             imageUrl: imageUrl
           }
-          socket.broadcast.emit('addImage', data)
+          io.emit(`addImage-${currentdoodleid}`, response)
           socket.emit('addImage', data)
         });
 
-        socket.on('downloadBlob', data => {
+        socket.on('clearImage', data => {
+          const {currentdoodleid} = data;
+          socket.emit(`clearcanvas-${currentdoodleid}`, data)
+        })
 
-          socket.broadcast.emit('downloadCanvas', data)
-          socket.emit('downloadCanvas', data)
+        socket.on('downloadBlob', data => {
+            const {currentdoodleid, datastring} = data;
+          socket.emit(`downloadCanvas-${currentdoodleid}`, datastring)
+          // socket.emit('downloadCanvas', data)
         });
 
         socket.on('disconnect', () => {
