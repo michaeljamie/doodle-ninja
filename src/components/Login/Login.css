@@ -157,7 +157,7 @@
     margin-bottom: 0px;
   }
 
-  .navlogo {
+  .navLogo {
     height: 67px;
     margin-right: 20px;
   }
@@ -458,6 +458,224 @@
     margin-bottom: 70px;
     text-align: justify;
     font-family: 'Pathway Gothic One', sans-serif;
+  }
+
+
+  @media (max-width: 500px){
+    .Login {
+      justify-content: space-between;
+    }
+
+    .LoginButton {
+      width: 200px;
+      height: 55px;
+      font-size: 32px;
+    }
+
+    .welcome {
+      font-size: 45px;
+    }
+
+    .welcome1 {
+      display: none;
+      font-size: 20px;
+    }
+
+    .bartitle {
+      font-size: 40px;
+    }
+
+
+    .navLogo {
+      height: 38px;
+      margin-right: 8px;
+    }
+
+    .social {
+      display: none;
+      height: 20px;
+    }
+
+    .social2 {
+      display: none;
+      height: 20px;
+    }
+
+    .topnav {
+      margin-top: 14px;
+    }
+
+    .arrowlogin {
+      width: 60px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .logintitle {
+      font-size: 35px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .loginsubtitle {
+      width: 95%;
+      font-size: 21px;
+      text-align: center;
+    }
+
+    .bar {
+      flex-direction: column;
+      height: 180vh;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .collabtools {
+      height: 310vh;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .bottombar {
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .lowerbar {
+      height: 200vh;
+    }
+
+    .lowerbartitle {
+      font-size: 35px;
+      text-align: center;
+    }
+
+
+    .bartitle {
+      width: 100%;
+      text-align: center;
+      margin-top: 35px;
+      font-size: 32px;
+    }
+
+    .fotologin {
+      height: 30vh;
+      width: 100%; 
+      margin-bottom: 15px;
+
+
+    }
+
+    .fototext {
+      font-size: 43px;
+    }
+
+    .fotocontainer1 {
+      height: 30vh;
+      width: 85%;
+    }
+
+    .fotocontainer2 {
+      height: 30vh;
+      width: 85%;
+    }
+
+    .fotocontainer3 {
+      height: 30vh;
+      width: 85%;
+    }
+
+    .fotocontainer4 {
+      height: 30vh;
+      width: 85%;
+    }
+
+    .barsection {
+      width: 100%;
+      justify-content: center;
+
+    }
+
+    .lowerbartitle {
+      font-size: 35px;
+    }
+
+    .baricon {
+      height: 30px;
+      margin-right: 8px;
+    }
+
+    .createlower {
+      font-size: 25px;
+      width: 80vw;
+      justify-content: center;
+    }
+
+    .lowertitle {
+      font-size: 35px;
+      width: 85%;
+    }
+
+    .lowerbar {
+      height: 280vh;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .lbtop {
+      flex-direction: column;
+      height: 180vh;
+      width: 85%;
+    }
+
+    .lbbottom {
+      flex-direction: column;
+      height: 180vh;
+      width: 85%;
+    }
+
+    .lowerright {
+      width: 85vw;
+    }
+
+    .splitlower {
+      width: 85%;
+    }
+
+    .chevron {
+      height: 55px;
+    }
+
+    .lowersubtitle {
+      font-size: 22px;
+      width: 85%;
+    }
+
+    .lowercanvas {
+      width: 80vw;
+      height: 80vh;
+      margin: 0;
+    }
+
+    .lowerchat {
+      width: 80vw;
+      height: 80vh;
+      margin: 0;
+    }
+
+    .scrolltitle {
+      font-size: 40px;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .scrollbar {
+      height: 60vh;
+    }
+
   }
   
 

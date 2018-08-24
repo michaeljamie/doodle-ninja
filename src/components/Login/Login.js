@@ -56,12 +56,14 @@ function login(){
                     <a href="http://www.instagram.com"><img className = 'social' src={instagramlogo} alt=""/></a> 
                     </div>
                     <div className='navmid'>
-                        <img className = 'navlogo' src={ninja} alt=""/>
-                        <h1 className = 'welcome'>Doodle Ninja</h1>
+                        <div className='navNinja'>
+                            <img className='navLogo' src={ninja} alt=""/>
+                        </div>
+                        <h1 className='welcome'>Doodle Ninja</h1>
                     </div>
                     
                     <div className='navmid'>
-                        <a onClick={login}><h3 className = 'welcome1'>ABOUT</h3></a>
+                        {/* <a onClick={login}><h3 className = 'welcome1'>ABOUT</h3></a> */}
                         <a onClick={login}><h3 className = 'welcome1'>LOGIN</h3></a>
                 
                     </div>  
@@ -80,22 +82,22 @@ function login(){
                    <h2 className = 'bartitle'>Collaborative Tools for Every Team:</h2> 
                 </div>
                 <div className = 'bar'>
-                    <a href=""><div className = 'fotocontainer1'>
+                    <div className = 'fotocontainer1'>
                         <img className = 'fotologin' src={foto1} alt=""/>
                         <div className = 'fototext'><h3>Managers</h3></div>
-                    </div></a>
-                    <a href=""><div className = 'fotocontainer2'>
+                    </div>
+                    <div className = 'fotocontainer2'>
                     <img className = 'fotologin' src={foto2} alt=""/>
                         <div className = 'fototext'><h3>Developers</h3></div>
-                    </div></a>
-                    <a href=""><div className = 'fotocontainer3'>
+                    </div>
+                    <div className = 'fotocontainer3'>
                         <img className = 'fotologin' src={foto3} alt=""/>
                         <div className = 'fototext'><h3>Teachers</h3></div>
-                    </div></a>
-                    <a href=""><div className = 'fotocontainer4'>
+                    </div>
+                    <div className = 'fotocontainer4'>
                         <img className = 'fotologin' src={foto4} alt=""/>
                         <div className = 'fototext'><h3>Designers</h3></div>
-                    </div></a>
+                    </div>
                 </div>
                <div className = 'bottombar'>
                     <div className = 'barsection'>

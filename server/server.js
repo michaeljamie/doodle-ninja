@@ -82,6 +82,8 @@ const app = express()
           const response = {
             imageUrl: imageUrl
           }
+          console.log('currentdoodleid =', currentdoodleid)
+          console.log('response =', response)
           io.emit(`addImage-${currentdoodleid}`, response)
           socket.emit('addImage', data)
         });

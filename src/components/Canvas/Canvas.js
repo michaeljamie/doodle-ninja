@@ -23,7 +23,7 @@ import sizeicon from './../../images/sizeicon.png';
 
 
 
-const socket = io()
+const socket = io(`http://localhost:3005`)
 
 
 

@@ -35,3 +35,23 @@
       color: white;
       font-family: 'Roboto', sans-serif;
   }
+
+  @media (max-width: 500px) {
+    .sitefooter {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footwelcome {
+        font-size: 40px;
+    }
+
+    .footlogo {
+        height: 38px;
+    }
+
+    .footfollow {
+        display: none;
+    }
+
+  }

@@ -1,13 +1,13 @@
 {
   "name": "doodle-ninja",
   "proxy": {
-    "/api":{
-      "target":"http://localhost:3005"
+    "/api": {
+      "target": "http://localhost:3005"
     },
-    "/auth":{
-      "target":"http://localhost:3005"
+    "/auth": {
+      "target": "http://localhost:3005"
     }
-  }, 
+  },
   "main": "./server/server.js",
   "version": "0.1.0",
   "private": true,
@@ -55,5 +55,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "cypress": "^3.0.3"
   }
 }

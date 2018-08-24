@@ -7,7 +7,7 @@ import chaticon from './../../images/chaticon.png';
 import axios from 'axios';
 
 
-const socket = io()
+const socket = io(`http://localhost:3005`)
 
 
 

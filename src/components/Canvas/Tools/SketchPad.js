@@ -22,7 +22,7 @@ import { connect } from 'react-redux';
 import { EmailShareButton } from 'react-share';
 
 
-const socket = io()
+const socket = io(process.env.REACT_APP_SOCKET)
 
 export const toolsMap = {
     [TOOL_PENCIL]: Pencil,
@@ -65,10 +65,10 @@ class SketchPad extends Component {
     size: PropTypes.number,
     tool: PropTypes.string,
     toolsMap: PropTypes.object,
-    onItemStart: PropTypes.func, // function(stroke:Stroke) { ... }
-    onEveryItemChange: PropTypes.func, // function(idStroke:string, x:number, y:number) { ... }
-    onDebouncedItemChange: PropTypes.func, // function(idStroke, points:Point[]) { ... }
-    onCompleteItem: PropTypes.func, // function(stroke:Stroke) { ... }
+    onItemStart: PropTypes.func, 
+    onEveryItemChange: PropTypes.func, 
+    onDebouncedItemChange: PropTypes.func, 
+    onCompleteItem: PropTypes.func, 
     debounceTime: PropTypes.number,
   };
 
@@ -144,11 +144,11 @@ class SketchPad extends Component {
     const ctx = this.canvas.getContext('2d');
     const imageObj1 = new Image();
     imageObj1.src = imgString;
-    imageObj1.crossOrigin = "Anonymous";
+    
 
     var w = this.canvas.width-20;
     var h = this.canvas.height-20;
-    
+    imageObj1.crossOrigin = "Anonymous";
     imageObj1.onload = function() {
       ctx.drawImage(imageObj1,20,20, w, h);
     }
@@ -187,6 +187,7 @@ class SketchPad extends Component {
       imageUrl: this.state.imageurl,
       currentdoodleid: this.props.doodleName
     }
+    console.log(imgObj)
     socket.emit('sendImage', imgObj)
   }
 
@@ -393,7 +394,7 @@ class SketchPad extends Component {
           { this.state.displayImage ?
           <div className = 'add_image'>
             <div className = 'add_imagetop'>
-              <img src={closewhite} onClick = {this.updateDisplay} alt="" className = 'closeicon'/>
+              <img src={closewhite} onClick = {this.updateImgDisplay} alt="" className = 'closeicon'/>
             </div>
             <div className = 'add_imagebox'>
               <input type="text" className = 'createinput' onKeyDown={this.keyPress} onChange = {(e) => {this.handleChange('imageurl', e.target.value)}} placeholder = 'Image URL' value = {this.state.imageurl}/>
