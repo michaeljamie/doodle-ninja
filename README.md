@@ -4,7 +4,7 @@
 
 #### My app was awarded 2nd best overall project out of the entire cohort.
 
-#### https://doodle.ninja/ | Hosted with Digital Ocean/Heroku
+#### [Live Site](https://doodle.ninja/ "Doodle.Ninja") | [LinkedIn Profile](https://www.linkedin.com/in/michaeljamiejohnston/ "LinkedIn") | Hosted with Digital Ocean/Heroku
 
 ### Technologies Used:
 
