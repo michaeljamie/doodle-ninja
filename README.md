@@ -32,5 +32,6 @@
 
 ### Canvas
 
-![canvas](https://user-images.githubusercontent.com/26236137/44891752-478c7e00-ac9e-11e8-9800-afc6f78375fa.png)
+![doodle ninja canvas](https://user-images.githubusercontent.com/26236137/44892722-925cc480-aca3-11e8-8aab-e38ff89ff9ce.png)
+
 
