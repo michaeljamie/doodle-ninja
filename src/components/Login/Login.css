@@ -93,7 +93,7 @@
   }
 
   .collabtools {
-    height: 1000px;
+    height: 150vh;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -101,6 +101,7 @@
     align-items: center;
     align-content: space-around;
     background-color: whitesmoke;
+    text-align: center;
     
   }
 
@@ -109,11 +110,11 @@
     font-size: 80px;
     color: #252525;
     font-family: 'Roboto', sans-serif;
-    height: 100px;
+    height: 28vh;
   }
 
   .bar {
-    height: 600px;
+    height: 40vh;
     background: whitesmoke;
     display: flex;
     flex-direction: row;
@@ -125,7 +126,7 @@
   }
 
   .bottombar {
-    height: 500px;
+    height: 60vh;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -216,8 +217,8 @@
     position: relative;
     text-align: center;
     color: white;
-    height: 250px;
-    width: 375px;
+    height: 28vh;
+    width: 22vw;
     background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) );
     box-shadow: 0px 0px 0px 5px #2AABE2;
     transition: box-shadow 0.3s linear;
@@ -228,8 +229,8 @@
     position: relative;
     text-align: center;
     color: white;
-    height: 250px;
-    width: 375px;
+    height: 28vh;
+    width: 22vw;
     background: linear-gradient( rgba(0, 0, 0, 3), rgba(0, 0, 0, 3) );
     box-shadow: 0px 0px 0px 5px #2AABE2;
     transition: box-shadow 0.3s linear;
@@ -240,8 +241,8 @@
     position: relative;
     text-align: center;
     color: white;
-    height: 250px;
-    width: 375px;
+    height: 28vh;
+    width: 22vw;
     background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
     box-shadow: 0px 0px 0px 5px #2AABE2;
     transition: box-shadow 0.3s linear;
@@ -252,8 +253,8 @@
     position: relative;
     text-align: center;
     color: white;
-    height: 250px;
-    width: 375px;
+    height: 28vh;
+    width: 22vw;
     background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
     box-shadow: 0px 0px 0px 5px #2AABE2;
     transition: box-shadow 0.3s linear;
@@ -261,8 +262,8 @@
   }
 
   .fotologin {
-    height: 250px;
-    width: 375px;
+    height: 28vh;
+    width: 22vw;
     background: linear-gradient( rgba(0, 0, 1, 3), rgba(0, 0, 1, 3) );
     opacity: .80;
   }

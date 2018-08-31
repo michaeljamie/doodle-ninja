@@ -36,8 +36,8 @@
 .dashcardright {
     margin-top: 50px;
     border: 4px black;
-    height: 470px;
-    width: 400px;
+    height: 66vh;
+    width: 30vw;
     background: white;
     transition: all .2s ease-in-out;
     display: flex;
@@ -72,7 +72,7 @@
 }
 
 .dashrighttop {
-    width: 400px;
+    width: 30vw;
     height: 100px;
     margin-top: 0px;
     background: #2AABE2;
@@ -157,8 +157,8 @@
     background: white;
     margin-top: 50px;
     margin-bottom: 50px;
-    height: 660px;
-    width: 680px;
+    height: 85vh;
+    width: 35vw;
     display: flex;
     transition: all .2s ease-in-out;
 	flex-direction: column;
@@ -180,7 +180,7 @@
 
 
 .drawcardtop {
-    width: 680px;
+    width: 35vw;
     height: 130px;
     background: #2AABE2;
     display: flex;
