@@ -1,8 +1,8 @@
 # Doodle Ninja
 
-#### Doodle Ninja is a collaborative whiteboard app where remote teams can sync up and share, visualize, and brainstorm ideas, integrate with all team members simultaneously, and keep everyone involved. UI/UX and design changes can be discussed in real-time with multiple users making and updating the canvas. Teachers can coordinate and interact with students via the digital whiteboard and chat. Managers can review performance with employees remotely, as well as endless other possibilities.
+Doodle Ninja is a collaborative whiteboard app where remote teams can sync up and share, visualize, and brainstorm ideas, integrate with all team members simultaneously, and keep everyone involved. UI/UX and design changes can be discussed in real-time with multiple users making and updating the canvas. Teachers can coordinate and interact with students via the digital whiteboard and chat. Managers can review performance with employees remotely, as well as endless other possibilities.
 
-#### My app was awarded 2nd best overall project out my entire DevMountain cohort.
+My app was awarded 2nd best overall project out my entire DevMountain cohort.
 
 #### [Live Site](https://doodle.ninja/ "Doodle.Ninja") | [LinkedIn Profile](https://www.linkedin.com/in/michaeljamiejohnston/ "LinkedIn") | Hosted with Digital Ocean/Heroku
 
