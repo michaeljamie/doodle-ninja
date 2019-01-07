@@ -4,11 +4,11 @@ Doodle Ninja is a collaborative whiteboard app where remote teams can sync up an
 
 My app was awarded 2nd best overall project out my entire DevMountain cohort.
 
-#### [Live Site](https://doodle.ninja/ "Doodle.Ninja") | [LinkedIn Profile](https://www.linkedin.com/in/michaeljamiejohnston/ "LinkedIn") | Hosted with Digital Ocean/Heroku
+[Live Site](https://doodle.ninja/ "Doodle.Ninja") | [LinkedIn Profile](https://www.linkedin.com/in/michaeljamiejohnston/ "LinkedIn") | Hosted with Digital Ocean/Heroku
 
 ### Technologies Used:
 
-#### React | Redux | HTML | CSS | Javascript | Node | Express | PostgreSQL | Massive | Socket IO | Nodemailer 
+React | Redux | HTML | CSS | Javascript | Node | Express | PostgreSQL | Massive | Socket IO | Nodemailer 
 
 ### Home Page
 
