@@ -1,7 +1,5 @@
 ![image](https://user-images.githubusercontent.com/26236137/50784783-eee07980-126b-11e9-8845-6e8329947920.png)
 
-# Doodle Ninja
-
 Doodle Ninja is a collaborative whiteboard app where remote teams can sync up and share, visualize, and brainstorm ideas, integrate with all team members simultaneously, and keep everyone involved. UI/UX and design changes can be discussed in real-time with multiple users making and updating the canvas. Teachers can coordinate and interact with students via the digital whiteboard and chat. Managers can review performance with employees remotely, as well as endless other possibilities.
 
 My app was awarded 2nd best overall project out my entire DevMountain cohort.
