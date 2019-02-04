@@ -2,11 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
 .canvas {
   height: 1000;
   width: 1000;
   border: black 5px;
 }
+
+
 
 
 
