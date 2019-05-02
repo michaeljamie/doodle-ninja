@@ -1,3 +1,5 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-oxygen.svg)](https://forthebadge.com)
+
 ![ninja](https://user-images.githubusercontent.com/26236137/50785580-5c8da500-126e-11e9-8db4-06d6922c1a39.png)
 
 ## Doodle Ninja
