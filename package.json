@@ -30,7 +30,7 @@
     "nodemailer": "^4.6.7",
     "npm": "^6.2.0",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
+    "react": "^16.8.6",
     "react-canvas-draw": "^1.0.2",
     "react-color": "^2.14.1",
     "react-dom": "^16.8.6",
