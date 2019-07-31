@@ -28,7 +28,7 @@
     "i": "^0.3.6",
     "massive": "^5.11.2",
     "nodemailer": "^4.6.7",
-    "npm": "^6.10.1",
+    "npm": "^6.10.2",
     "prop-types": "^15.6.2",
     "react": "^16.8.6",
     "react-canvas-draw": "^1.0.2",
