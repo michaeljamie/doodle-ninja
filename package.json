@@ -48,7 +48,7 @@
     "redux": "^4.0.4",
     "redux-promise-middleware": "^6.1.1",
     "socket.io": "^2.2.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
