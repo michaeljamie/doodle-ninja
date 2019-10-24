@@ -41,7 +41,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-scrollable-anchor": "^0.6.1",
-    "react-share": "^3.0.0",
+    "react-share": "^3.0.1",
     "react-sketch": "^0.5.1",
     "react-sketchpad": "0.0.3",
     "react-toastify": "^4.1.0",
