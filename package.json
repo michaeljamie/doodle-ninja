@@ -57,6 +57,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "cypress": "^3.8.1"
+    "cypress": "^4.12.0"
   }
 }
