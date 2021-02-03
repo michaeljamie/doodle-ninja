@@ -34,7 +34,7 @@
     "react-canvas-draw": "^1.1.1",
     "react-color": "^2.17.3",
     "react-dom": "^16.13.0",
-    "react-dropzone": "^10.1.7",
+    "react-dropzone": "^11.3.0",
     "react-loading-screen": "0.0.17",
     "react-particles-js": "^2.7.0",
     "react-redux": "^7.1.3",
