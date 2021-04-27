@@ -44,7 +44,7 @@
     "react-share": "^3.0.1",
     "react-sketch": "^0.5.1",
     "react-sketchpad": "0.0.3",
-    "react-toastify": "^5.4.1",
+    "react-toastify": "^7.0.4",
     "redux": "^4.0.5",
     "redux-promise-middleware": "^6.1.1",
     "socket.io": "^2.3.0",
